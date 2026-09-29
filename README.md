@@ -6,7 +6,7 @@ Abstract: Unlearnable examples (UEs) protect training data by injecting impercep
 If you find this work useful in your research, please consider citing:
 
 ```bibtex
-@inproceedings{cai2026fuse,
+@inproceedings{fuse,
   title={FUSE: Full-spectrum Unlearnable Examples via Spectral Equalization},
   author={Cai, Jiale and Xu, Gezheng and Li, Zhihao and Fang, Ruiyi and Pu, Ruizhi and Wu, Di and Lao, Qicheng and Ling, Charles and Wang, Boyu},
   booktitle={Forty-third International Conference on Machine Learning},
