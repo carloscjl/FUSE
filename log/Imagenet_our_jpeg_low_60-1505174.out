@@ -1,0 +1,966 @@
+2025-11-26 03:03:33,058 PyTorch Version: 2.6.0
+2025-11-26 03:03:33,079 GPU List: ['NVIDIA L40S']
+2025-11-26 03:03:33,085 num_classes: 100
+2025-11-26 03:03:33,085 epochs: 100
+2025-11-26 03:03:33,085 grad_clip: 5.0
+2025-11-26 03:03:33,085 log_frequency: 100
+2025-11-26 03:03:33,085 model: {'name': 'ResNet18', 'num_classes': 100}
+2025-11-26 03:03:33,085 criterion: {'name': 'CrossEntropyLoss'}
+2025-11-26 03:03:33,085 optimizer: {'name': 'SGD', 'lr': 0.01, 'weight_decay': 5e-05, 'momentum': 0.9}
+2025-11-26 03:03:33,085 scheduler: {'name': 'CosineAnnealingLR', 'T_max': 100, 'eta_min': 0.0}
+2025-11-26 03:03:33,085 dataset: {'name': 'DatasetGenerator', 'train_batch_size': 128, 'eval_batch_size': 128}
+2025-11-26 03:03:33,087 seed: 0
+2025-11-26 03:03:33,087 version: resnet18
+2025-11-26 03:03:33,087 exp_name: experiment/classwise/model_training2025-11-26 03:03:33.055562
+2025-11-26 03:03:33,087 config_path: configs/imagenet-mini
+2025-11-26 03:03:33,087 load_model: False
+2025-11-26 03:03:33,087 data_parallel: False
+2025-11-26 03:03:33,087 train: True
+2025-11-26 03:03:33,087 save_frequency: -1
+2025-11-26 03:03:33,087 train_face: False
+2025-11-26 03:03:33,087 train_portion: 1.0
+2025-11-26 03:03:33,087 train_batch_size: 64
+2025-11-26 03:03:33,087 eval_batch_size: 256
+2025-11-26 03:03:33,087 num_of_workers: 6
+2025-11-26 03:03:33,087 train_data_type: PoisonImageNetMini
+2025-11-26 03:03:33,088 test_data_type: ImageNetMini
+2025-11-26 03:03:33,088 train_data_path: ../datasets
+2025-11-26 03:03:33,088 test_data_path: ../datasets
+2025-11-26 03:03:33,088 perturb_type: classwise
+2025-11-26 03:03:33,088 patch_location: center
+2025-11-26 03:03:33,088 poison_rate: 1.0
+2025-11-26 03:03:33,088 perturb_tensor_filepath: 
+2025-11-26 03:03:33,088 generator_filepath: ./experiment/classwise/noise_generation2025-09-08-all/generator.pth
+2025-11-26 03:03:33,088 use_generator: True
+2025-11-26 03:03:33,088 gue: False
+2025-11-26 03:03:33,088 filter_type: low
+2025-11-26 03:03:33,088 cutoff: 0.5
+2025-11-26 03:03:33,088 img_denoise: 60
+2025-11-26 03:03:33,088 jpeg_defense: True
+Generator ./experiment/classwise/noise_generation2025-09-08-all/generator.pth loaded!
+./dataset.py:198: RuntimeWarning: invalid value encountered in divide
+  class_noise = np.stack([ (sums[c] / counts[c]).astype(np.float32) for c in range(num_classes) ], axis=0)
+2025-11-26 03:05:01,958 Training Dataset: Dataset PoisonImageNetMini
+    Number of datapoints: 25878
+    Root location: ../datasets/ImageNet
+    Split: train
+2025-11-26 03:05:01,958 Test Dataset: Dataset ImageNetMini
+    Number of datapoints: 1000
+    Root location: ../datasets/ImageNet
+    Split: val
+    StandardTransform
+Transform: Compose(
+               Resize(size=224, interpolation=bilinear, max_size=None, antialias=True)
+               CenterCrop(size=(224, 224))
+               ToTensor()
+           )
+2025-11-26 03:05:01,960 param size = 11.220132MB
+2025-11-26 03:05:01,961 
+2025-11-26 03:05:01,961 ====================Training Epoch 0====================
+(1000, 224, 224, 3)
+Poison samples: 25878/25878
+train_dataset
+2025-11-26 03:05:07,613 epoch=0	global_step=0	acc=0.0156	acc_avg=0.0156	loss=4.7107	loss_avg=4.7107	lr=0.0100	|gn|=8.6793	time=0.23it/s
+2025-11-26 03:06:16,030 epoch=0	global_step=100	acc=0.0156	acc_avg=0.0125	loss=4.7029	loss_avg=4.7477	lr=0.0100	|gn|=2.7719	time=1.66it/s
+2025-11-26 03:07:24,760 epoch=0	global_step=200	acc=0.0156	acc_avg=0.0127	loss=4.6195	loss_avg=4.7054	lr=0.0100	|gn|=1.9944	time=1.66it/s
+2025-11-26 03:08:33,526 epoch=0	global_step=300	acc=0.0000	acc_avg=0.0130	loss=4.6445	loss_avg=4.6801	lr=0.0100	|gn|=1.7727	time=1.66it/s
+2025-11-26 03:09:42,190 epoch=0	global_step=400	acc=0.0156	acc_avg=0.0139	loss=4.6052	loss_avg=4.6631	lr=0.0100	|gn|=2.1686	time=1.66it/s
+2025-11-26 03:09:44,331 ====================Eval Epoch 0====================
+2025-11-26 03:09:56,445 epoch=0	global_step=3	acc=0.0000	acc_avg=0.0130	acc5=0.0259	acc5_avg=0.0610	loss=4.6252	loss_avg=4.6356	time=0.27it/s
+2025-11-26 03:09:56,445 Eval Loss:4.6356	Eval acc: 1.30
+2025-11-26 03:09:56,445 
+2025-11-26 03:09:56,446 ====================Training Epoch 1====================
+2025-11-26 03:11:04,350 epoch=1	global_step=500	acc=0.0000	acc_avg=0.0193	loss=4.5854	loss_avg=4.5756	lr=0.0100	|gn|=2.0106	time=1.66it/s
+2025-11-26 03:12:13,103 epoch=1	global_step=600	acc=0.0000	acc_avg=0.0212	loss=4.4701	loss_avg=4.5609	lr=0.0100	|gn|=1.7601	time=1.66it/s
+2025-11-26 03:13:21,852 epoch=1	global_step=700	acc=0.0000	acc_avg=0.0199	loss=4.5506	loss_avg=4.5493	lr=0.0100	|gn|=4.3209	time=1.66it/s
+2025-11-26 03:14:30,657 epoch=1	global_step=800	acc=0.0312	acc_avg=0.0210	loss=4.5665	loss_avg=4.5372	lr=0.0100	|gn|=1.6735	time=1.66it/s
+2025-11-26 03:14:35,539 ====================Eval Epoch 1====================
+2025-11-26 03:14:39,995 epoch=1	global_step=3	acc=0.0000	acc_avg=0.0200	acc5=0.0474	acc5_avg=0.0930	loss=4.7322	loss_avg=4.6369	time=2.26it/s
+2025-11-26 03:14:39,996 Eval Loss:4.6369	Eval acc: 2.00
+2025-11-26 03:14:39,996 
+2025-11-26 03:14:39,996 ====================Training Epoch 2====================
+2025-11-26 03:15:45,183 epoch=2	global_step=900	acc=0.0625	acc_avg=0.0247	loss=4.3481	loss_avg=4.4886	lr=0.0100	|gn|=2.8508	time=1.66it/s
+2025-11-26 03:16:53,989 epoch=2	global_step=1000	acc=0.0156	acc_avg=0.0246	loss=4.4904	loss_avg=4.4832	lr=0.0100	|gn|=2.3322	time=1.66it/s
+2025-11-26 03:18:02,735 epoch=2	global_step=1100	acc=0.0000	acc_avg=0.0266	loss=4.6000	loss_avg=4.4681	lr=0.0100	|gn|=3.2183	time=1.66it/s
+2025-11-26 03:19:11,413 epoch=2	global_step=1200	acc=0.0312	acc_avg=0.0282	loss=4.3184	loss_avg=4.4546	lr=0.0100	|gn|=1.8933	time=1.66it/s
+2025-11-26 03:19:19,042 ====================Eval Epoch 2====================
+2025-11-26 03:19:23,061 epoch=2	global_step=3	acc=0.0216	acc_avg=0.0110	acc5=0.0948	acc5_avg=0.0580	loss=18.1899	loss_avg=16.7816	time=2.26it/s
+2025-11-26 03:19:23,061 Eval Loss:16.7816	Eval acc: 1.10
+2025-11-26 03:19:23,062 
+2025-11-26 03:19:23,062 ====================Training Epoch 3====================
+2025-11-26 03:20:25,312 epoch=3	global_step=1300	acc=0.0469	acc_avg=0.0369	loss=4.4543	loss_avg=4.3653	lr=0.0100	|gn|=2.1461	time=1.66it/s
+2025-11-26 03:21:34,049 epoch=3	global_step=1400	acc=0.0156	acc_avg=0.0373	loss=4.4407	loss_avg=4.3532	lr=0.0100	|gn|=2.3951	time=1.66it/s
+2025-11-26 03:22:42,795 epoch=3	global_step=1500	acc=0.0312	acc_avg=0.0376	loss=4.2417	loss_avg=4.3396	lr=0.0100	|gn|=2.4355	time=1.66it/s
+2025-11-26 03:23:51,525 epoch=3	global_step=1600	acc=0.0312	acc_avg=0.0391	loss=4.2026	loss_avg=4.3230	lr=0.0100	|gn|=2.8013	time=1.66it/s
+2025-11-26 03:24:01,900 ====================Eval Epoch 3====================
+2025-11-26 03:24:05,872 epoch=3	global_step=3	acc=0.0259	acc_avg=0.0080	acc5=0.0690	acc5_avg=0.0520	loss=32.8212	loss_avg=33.1839	time=2.26it/s
+2025-11-26 03:24:05,873 Eval Loss:33.1839	Eval acc: 0.80
+2025-11-26 03:24:05,873 
+2025-11-26 03:24:05,873 ====================Training Epoch 4====================
+2025-11-26 03:25:05,449 epoch=4	global_step=1700	acc=0.0312	acc_avg=0.0517	loss=4.1324	loss_avg=4.2345	lr=0.0100	|gn|=2.2564	time=1.66it/s
+2025-11-26 03:26:14,183 epoch=4	global_step=1800	acc=0.0156	acc_avg=0.0487	loss=4.3000	loss_avg=4.2291	lr=0.0100	|gn|=2.6050	time=1.66it/s
+2025-11-26 03:27:22,956 epoch=4	global_step=1900	acc=0.0156	acc_avg=0.0490	loss=4.3536	loss_avg=4.2130	lr=0.0100	|gn|=2.6448	time=1.66it/s
+2025-11-26 03:28:31,685 epoch=4	global_step=2000	acc=0.0781	acc_avg=0.0501	loss=4.1105	loss_avg=4.1961	lr=0.0100	|gn|=2.7426	time=1.66it/s
+2025-11-26 03:28:44,827 ====================Eval Epoch 4====================
+2025-11-26 03:28:48,761 epoch=4	global_step=3	acc=0.0388	acc_avg=0.0100	acc5=0.0819	acc5_avg=0.0460	loss=40.6459	loss_avg=44.4871	time=2.26it/s
+2025-11-26 03:28:48,761 Eval Loss:44.4871	Eval acc: 1.00
+2025-11-26 03:28:48,762 
+2025-11-26 03:28:48,762 ====================Training Epoch 5====================
+2025-11-26 03:29:45,538 epoch=5	global_step=2100	acc=0.0312	acc_avg=0.0540	loss=4.0547	loss_avg=4.0862	lr=0.0099	|gn|=3.0360	time=1.66it/s
+2025-11-26 03:30:54,359 epoch=5	global_step=2200	acc=0.0469	acc_avg=0.0559	loss=3.9654	loss_avg=4.0829	lr=0.0099	|gn|=2.7879	time=1.66it/s
+2025-11-26 03:32:03,096 epoch=5	global_step=2300	acc=0.1094	acc_avg=0.0576	loss=4.0678	loss_avg=4.0662	lr=0.0099	|gn|=2.6952	time=1.66it/s
+2025-11-26 03:33:11,801 epoch=5	global_step=2400	acc=0.0938	acc_avg=0.0609	loss=3.8492	loss_avg=4.0443	lr=0.0099	|gn|=3.0654	time=1.66it/s
+2025-11-26 03:33:27,687 ====================Eval Epoch 5====================
+2025-11-26 03:33:31,675 epoch=5	global_step=3	acc=0.0345	acc_avg=0.0140	acc5=0.1207	acc5_avg=0.0770	loss=7.9591	loss_avg=7.3951	time=2.26it/s
+2025-11-26 03:33:31,675 Eval Loss:7.3951	Eval acc: 1.40
+2025-11-26 03:33:31,676 
+2025-11-26 03:33:31,676 ====================Training Epoch 6====================
+2025-11-26 03:34:25,652 epoch=6	global_step=2500	acc=0.0156	acc_avg=0.0672	loss=4.0344	loss_avg=3.9526	lr=0.0099	|gn|=2.7137	time=1.67it/s
+2025-11-26 03:35:34,263 epoch=6	global_step=2600	acc=0.0781	acc_avg=0.0727	loss=3.9525	loss_avg=3.9259	lr=0.0099	|gn|=3.2405	time=1.66it/s
+2025-11-26 03:36:43,036 epoch=6	global_step=2700	acc=0.0469	acc_avg=0.0727	loss=3.7213	loss_avg=3.9215	lr=0.0099	|gn|=2.7391	time=1.66it/s
+2025-11-26 03:37:51,787 epoch=6	global_step=2800	acc=0.0781	acc_avg=0.0743	loss=4.1963	loss_avg=3.9123	lr=0.0099	|gn|=3.2579	time=1.66it/s
+2025-11-26 03:38:10,416 ====================Eval Epoch 6====================
+2025-11-26 03:38:14,470 epoch=6	global_step=3	acc=0.0000	acc_avg=0.0150	acc5=0.0690	acc5_avg=0.0520	loss=26.9342	loss_avg=27.7765	time=2.26it/s
+2025-11-26 03:38:14,470 Eval Loss:27.7765	Eval acc: 1.50
+2025-11-26 03:38:14,471 
+2025-11-26 03:38:14,471 ====================Training Epoch 7====================
+2025-11-26 03:39:05,788 epoch=7	global_step=2900	acc=0.1250	acc_avg=0.0901	loss=3.6120	loss_avg=3.8495	lr=0.0099	|gn|=2.5940	time=1.66it/s
+2025-11-26 03:40:14,451 epoch=7	global_step=3000	acc=0.1094	acc_avg=0.0852	loss=3.8570	loss_avg=3.8634	lr=0.0099	|gn|=3.8688	time=1.66it/s
+2025-11-26 03:41:23,179 epoch=7	global_step=3100	acc=0.1094	acc_avg=0.0852	loss=3.6388	loss_avg=3.8495	lr=0.0099	|gn|=2.6634	time=1.66it/s
+2025-11-26 03:42:31,943 epoch=7	global_step=3200	acc=0.0938	acc_avg=0.0855	loss=3.7175	loss_avg=3.8451	lr=0.0099	|gn|=2.8685	time=1.66it/s
+2025-11-26 03:42:53,336 ====================Eval Epoch 7====================
+2025-11-26 03:42:57,400 epoch=7	global_step=3	acc=0.0345	acc_avg=0.0170	acc5=0.0991	acc5_avg=0.0720	loss=10.2498	loss_avg=9.9142	time=2.26it/s
+2025-11-26 03:42:57,400 Eval Loss:9.9142	Eval acc: 1.70
+2025-11-26 03:42:57,400 
+2025-11-26 03:42:57,400 ====================Training Epoch 8====================
+2025-11-26 03:43:46,089 epoch=8	global_step=3300	acc=0.0938	acc_avg=0.0890	loss=3.7213	loss_avg=3.7902	lr=0.0098	|gn|=2.8692	time=1.66it/s
+2025-11-26 03:44:54,918 epoch=8	global_step=3400	acc=0.1094	acc_avg=0.0933	loss=3.9086	loss_avg=3.7876	lr=0.0098	|gn|=2.9764	time=1.66it/s
+2025-11-26 03:46:03,820 epoch=8	global_step=3500	acc=0.1094	acc_avg=0.0942	loss=3.5214	loss_avg=3.7697	lr=0.0098	|gn|=2.5045	time=1.66it/s
+2025-11-26 03:47:12,669 epoch=8	global_step=3600	acc=0.1250	acc_avg=0.0949	loss=3.6229	loss_avg=3.7652	lr=0.0098	|gn|=3.0415	time=1.66it/s
+2025-11-26 03:47:36,862 ====================Eval Epoch 8====================
+2025-11-26 03:47:40,954 epoch=8	global_step=3	acc=0.0172	acc_avg=0.0190	acc5=0.1078	acc5_avg=0.0670	loss=9.1053	loss_avg=9.0226	time=2.25it/s
+2025-11-26 03:47:40,954 Eval Loss:9.0226	Eval acc: 1.90
+2025-11-26 03:47:40,955 
+2025-11-26 03:47:40,955 ====================Training Epoch 9====================
+2025-11-26 03:48:26,845 epoch=9	global_step=3700	acc=0.0625	acc_avg=0.1038	loss=4.1515	loss_avg=3.7034	lr=0.0098	|gn|=5.0081	time=1.66it/s
+2025-11-26 03:49:35,711 epoch=9	global_step=3800	acc=0.0469	acc_avg=0.1034	loss=3.8156	loss_avg=3.6981	lr=0.0098	|gn|=3.1598	time=1.66it/s
+2025-11-26 03:50:44,530 epoch=9	global_step=3900	acc=0.0469	acc_avg=0.1040	loss=3.6841	loss_avg=3.6859	lr=0.0098	|gn|=3.2066	time=1.66it/s
+2025-11-26 03:51:53,330 epoch=9	global_step=4000	acc=0.0938	acc_avg=0.1055	loss=3.6125	loss_avg=3.6754	lr=0.0098	|gn|=2.7076	time=1.67it/s
+2025-11-26 03:52:20,245 ====================Eval Epoch 9====================
+2025-11-26 03:52:24,245 epoch=9	global_step=3	acc=0.0302	acc_avg=0.0230	acc5=0.0819	acc5_avg=0.0860	loss=7.5810	loss_avg=7.0727	time=2.25it/s
+2025-11-26 03:52:24,245 Eval Loss:7.0727	Eval acc: 2.30
+2025-11-26 03:52:24,246 
+2025-11-26 03:52:24,246 ====================Training Epoch 10====================
+2025-11-26 03:53:07,359 epoch=10	global_step=4100	acc=0.0781	acc_avg=0.1155	loss=3.8591	loss_avg=3.5955	lr=0.0098	|gn|=3.6984	time=1.66it/s
+2025-11-26 03:54:16,168 epoch=10	global_step=4200	acc=0.1094	acc_avg=0.1169	loss=3.5115	loss_avg=3.5978	lr=0.0098	|gn|=2.9424	time=1.66it/s
+2025-11-26 03:55:24,990 epoch=10	global_step=4300	acc=0.1406	acc_avg=0.1169	loss=3.5097	loss_avg=3.6034	lr=0.0098	|gn|=3.4763	time=1.66it/s
+2025-11-26 03:56:33,860 epoch=10	global_step=4400	acc=0.0938	acc_avg=0.1181	loss=3.7787	loss_avg=3.5901	lr=0.0098	|gn|=3.6073	time=1.66it/s
+2025-11-26 03:57:03,626 ====================Eval Epoch 10====================
+2025-11-26 03:57:07,668 epoch=10	global_step=3	acc=0.0388	acc_avg=0.0160	acc5=0.1336	acc5_avg=0.0760	loss=4.9742	loss_avg=5.1293	time=2.26it/s
+2025-11-26 03:57:07,668 Eval Loss:5.1293	Eval acc: 1.60
+2025-11-26 03:57:07,668 
+2025-11-26 03:57:07,668 ====================Training Epoch 11====================
+2025-11-26 03:57:48,022 epoch=11	global_step=4500	acc=0.1250	acc_avg=0.1269	loss=3.4118	loss_avg=3.4988	lr=0.0097	|gn|=2.8901	time=1.66it/s
+2025-11-26 03:58:56,664 epoch=11	global_step=4600	acc=0.0625	acc_avg=0.1254	loss=3.5466	loss_avg=3.5126	lr=0.0097	|gn|=3.2344	time=1.67it/s
+2025-11-26 04:00:05,473 epoch=11	global_step=4700	acc=0.1250	acc_avg=0.1281	loss=3.3177	loss_avg=3.5156	lr=0.0097	|gn|=2.8669	time=1.66it/s
+2025-11-26 04:01:14,315 epoch=11	global_step=4800	acc=0.1250	acc_avg=0.1298	loss=3.4252	loss_avg=3.5066	lr=0.0097	|gn|=2.6714	time=1.66it/s
+2025-11-26 04:01:46,920 ====================Eval Epoch 11====================
+2025-11-26 04:01:51,011 epoch=11	global_step=3	acc=0.0474	acc_avg=0.0270	acc5=0.0776	acc5_avg=0.0830	loss=8.7253	loss_avg=8.7333	time=2.26it/s
+2025-11-26 04:01:51,011 Eval Loss:8.7333	Eval acc: 2.70
+2025-11-26 04:01:51,012 
+2025-11-26 04:01:51,012 ====================Training Epoch 12====================
+2025-11-26 04:02:28,745 epoch=12	global_step=4900	acc=0.0938	acc_avg=0.1344	loss=3.4946	loss_avg=3.4681	lr=0.0096	|gn|=3.6613	time=1.66it/s
+2025-11-26 04:03:37,679 epoch=12	global_step=5000	acc=0.2031	acc_avg=0.1377	loss=3.3432	loss_avg=3.4447	lr=0.0096	|gn|=3.6713	time=1.66it/s
+2025-11-26 04:04:46,688 epoch=12	global_step=5100	acc=0.0938	acc_avg=0.1392	loss=3.2993	loss_avg=3.4352	lr=0.0096	|gn|=3.0048	time=1.66it/s
+2025-11-26 04:05:55,623 epoch=12	global_step=5200	acc=0.1562	acc_avg=0.1402	loss=3.3847	loss_avg=3.4374	lr=0.0096	|gn|=3.4955	time=1.66it/s
+2025-11-26 04:06:30,924 ====================Eval Epoch 12====================
+2025-11-26 04:06:34,931 epoch=12	global_step=3	acc=0.0259	acc_avg=0.0190	acc5=0.1509	acc5_avg=0.0990	loss=5.2604	loss_avg=5.8633	time=2.26it/s
+2025-11-26 04:06:34,932 Eval Loss:5.8633	Eval acc: 1.90
+2025-11-26 04:06:34,932 
+2025-11-26 04:06:34,932 ====================Training Epoch 13====================
+2025-11-26 04:07:09,965 epoch=13	global_step=5300	acc=0.0938	acc_avg=0.1378	loss=3.5607	loss_avg=3.4196	lr=0.0096	|gn|=3.1468	time=1.66it/s
+2025-11-26 04:08:18,999 epoch=13	global_step=5400	acc=0.0938	acc_avg=0.1437	loss=3.2355	loss_avg=3.3980	lr=0.0096	|gn|=3.5620	time=1.66it/s
+2025-11-26 04:09:27,983 epoch=13	global_step=5500	acc=0.0938	acc_avg=0.1496	loss=3.4978	loss_avg=3.3779	lr=0.0096	|gn|=4.0755	time=1.66it/s
+2025-11-26 04:10:36,796 epoch=13	global_step=5600	acc=0.1719	acc_avg=0.1515	loss=3.5586	loss_avg=3.3722	lr=0.0096	|gn|=3.9872	time=1.66it/s
+2025-11-26 04:11:14,742 ====================Eval Epoch 13====================
+2025-11-26 04:11:18,715 epoch=13	global_step=3	acc=0.0129	acc_avg=0.0300	acc5=0.1078	acc5_avg=0.1250	loss=5.0034	loss_avg=5.1092	time=2.26it/s
+2025-11-26 04:11:18,715 Eval Loss:5.1092	Eval acc: 3.00
+2025-11-26 04:11:18,715 
+2025-11-26 04:11:18,715 ====================Training Epoch 14====================
+2025-11-26 04:11:50,824 epoch=14	global_step=5700	acc=0.1719	acc_avg=0.1653	loss=3.1570	loss_avg=3.2652	lr=0.0095	|gn|=3.4152	time=1.66it/s
+2025-11-26 04:12:59,701 epoch=14	global_step=5800	acc=0.2188	acc_avg=0.1692	loss=3.3082	loss_avg=3.2918	lr=0.0095	|gn|=3.5232	time=1.66it/s
+2025-11-26 04:14:08,640 epoch=14	global_step=5900	acc=0.2031	acc_avg=0.1673	loss=3.7018	loss_avg=3.2980	lr=0.0095	|gn|=3.9375	time=1.66it/s
+2025-11-26 04:15:17,500 epoch=14	global_step=6000	acc=0.1875	acc_avg=0.1654	loss=3.3279	loss_avg=3.2979	lr=0.0095	|gn|=3.3811	time=1.66it/s
+2025-11-26 04:15:58,207 ====================Eval Epoch 14====================
+2025-11-26 04:16:02,169 epoch=14	global_step=3	acc=0.0302	acc_avg=0.0240	acc5=0.1207	acc5_avg=0.1010	loss=4.9214	loss_avg=5.2668	time=2.26it/s
+2025-11-26 04:16:02,170 Eval Loss:5.2668	Eval acc: 2.40
+2025-11-26 04:16:02,170 
+2025-11-26 04:16:02,170 ====================Training Epoch 15====================
+2025-11-26 04:16:31,655 epoch=15	global_step=6100	acc=0.1406	acc_avg=0.1696	loss=3.3024	loss_avg=3.2551	lr=0.0095	|gn|=3.6871	time=1.66it/s
+2025-11-26 04:17:40,659 epoch=15	global_step=6200	acc=0.2344	acc_avg=0.1647	loss=3.1075	loss_avg=3.2647	lr=0.0095	|gn|=2.9758	time=1.66it/s
+2025-11-26 04:18:49,586 epoch=15	global_step=6300	acc=0.2500	acc_avg=0.1703	loss=3.2936	loss_avg=3.2562	lr=0.0095	|gn|=3.3507	time=1.66it/s
+2025-11-26 04:19:58,565 epoch=15	global_step=6400	acc=0.1094	acc_avg=0.1723	loss=3.2353	loss_avg=3.2472	lr=0.0095	|gn|=3.5577	time=1.66it/s
+2025-11-26 04:20:42,079 ====================Eval Epoch 15====================
+2025-11-26 04:20:46,062 epoch=15	global_step=3	acc=0.0345	acc_avg=0.0280	acc5=0.1509	acc5_avg=0.1260	loss=5.7639	loss_avg=6.3677	time=2.25it/s
+2025-11-26 04:20:46,062 Eval Loss:6.3677	Eval acc: 2.80
+2025-11-26 04:20:46,063 
+2025-11-26 04:20:46,063 ====================Training Epoch 16====================
+2025-11-26 04:21:13,099 epoch=16	global_step=6500	acc=0.2031	acc_avg=0.1689	loss=3.0797	loss_avg=3.1980	lr=0.0094	|gn|=3.3460	time=1.66it/s
+2025-11-26 04:22:22,202 epoch=16	global_step=6600	acc=0.1719	acc_avg=0.1826	loss=3.0469	loss_avg=3.2026	lr=0.0094	|gn|=3.8688	time=1.66it/s
+2025-11-26 04:23:31,312 epoch=16	global_step=6700	acc=0.1094	acc_avg=0.1806	loss=3.6434	loss_avg=3.1976	lr=0.0094	|gn|=4.8003	time=1.66it/s
+2025-11-26 04:24:40,551 epoch=16	global_step=6800	acc=0.1719	acc_avg=0.1813	loss=3.0176	loss_avg=3.1958	lr=0.0094	|gn|=3.5189	time=1.66it/s
+2025-11-26 04:25:26,748 ====================Eval Epoch 16====================
+2025-11-26 04:25:30,774 epoch=16	global_step=3	acc=0.0259	acc_avg=0.0340	acc5=0.1509	acc5_avg=0.1140	loss=5.1789	loss_avg=5.5389	time=2.26it/s
+2025-11-26 04:25:30,774 Eval Loss:5.5389	Eval acc: 3.40
+2025-11-26 04:25:30,775 
+2025-11-26 04:25:30,775 ====================Training Epoch 17====================
+2025-11-26 04:25:54,936 epoch=17	global_step=6900	acc=0.2500	acc_avg=0.1984	loss=3.0248	loss_avg=3.1019	lr=0.0093	|gn|=3.1994	time=1.66it/s
+2025-11-26 04:27:03,901 epoch=17	global_step=7000	acc=0.2031	acc_avg=0.1974	loss=2.9596	loss_avg=3.1018	lr=0.0093	|gn|=3.2677	time=1.66it/s
+2025-11-26 04:28:12,780 epoch=17	global_step=7100	acc=0.2969	acc_avg=0.1957	loss=3.1708	loss_avg=3.1055	lr=0.0093	|gn|=3.1685	time=1.66it/s
+2025-11-26 04:29:21,706 epoch=17	global_step=7200	acc=0.2188	acc_avg=0.1950	loss=3.1576	loss_avg=3.1191	lr=0.0093	|gn|=3.5571	time=1.66it/s
+2025-11-26 04:30:10,703 ====================Eval Epoch 17====================
+2025-11-26 04:30:14,742 epoch=17	global_step=3	acc=0.0388	acc_avg=0.0440	acc5=0.1681	acc5_avg=0.1650	loss=5.1888	loss_avg=5.1721	time=2.25it/s
+2025-11-26 04:30:14,742 Eval Loss:5.1721	Eval acc: 4.40
+2025-11-26 04:30:14,743 
+2025-11-26 04:30:14,743 ====================Training Epoch 18====================
+2025-11-26 04:30:35,792 epoch=18	global_step=7300	acc=0.2031	acc_avg=0.2031	loss=3.1083	loss_avg=3.0645	lr=0.0092	|gn|=3.5385	time=1.66it/s
+2025-11-26 04:31:44,565 epoch=18	global_step=7400	acc=0.1875	acc_avg=0.1965	loss=3.0400	loss_avg=3.0830	lr=0.0092	|gn|=3.1616	time=1.66it/s
+2025-11-26 04:32:53,276 epoch=18	global_step=7500	acc=0.2188	acc_avg=0.1993	loss=2.8414	loss_avg=3.0716	lr=0.0092	|gn|=3.5835	time=1.66it/s
+2025-11-26 04:34:02,066 epoch=18	global_step=7600	acc=0.2188	acc_avg=0.2025	loss=3.1352	loss_avg=3.0669	lr=0.0092	|gn|=3.8170	time=1.66it/s
+2025-11-26 04:34:53,661 ====================Eval Epoch 18====================
+2025-11-26 04:34:57,629 epoch=18	global_step=3	acc=0.0345	acc_avg=0.0240	acc5=0.1681	acc5_avg=0.0900	loss=5.7152	loss_avg=6.4121	time=2.26it/s
+2025-11-26 04:34:57,629 Eval Loss:6.4121	Eval acc: 2.40
+2025-11-26 04:34:57,630 
+2025-11-26 04:34:57,630 ====================Training Epoch 19====================
+2025-11-26 04:35:16,049 epoch=19	global_step=7700	acc=0.2188	acc_avg=0.2112	loss=3.2215	loss_avg=3.0142	lr=0.0091	|gn|=3.5649	time=1.66it/s
+2025-11-26 04:36:24,752 epoch=19	global_step=7800	acc=0.2344	acc_avg=0.2145	loss=3.0031	loss_avg=3.0179	lr=0.0091	|gn|=3.8980	time=1.66it/s
+2025-11-26 04:37:33,498 epoch=19	global_step=7900	acc=0.1875	acc_avg=0.2120	loss=2.9807	loss_avg=3.0303	lr=0.0091	|gn|=3.5447	time=1.66it/s
+2025-11-26 04:38:42,262 epoch=19	global_step=8000	acc=0.2969	acc_avg=0.2149	loss=2.6212	loss_avg=3.0150	lr=0.0091	|gn|=3.8587	time=1.66it/s
+2025-11-26 04:39:36,647 ====================Eval Epoch 19====================
+2025-11-26 04:39:40,650 epoch=19	global_step=3	acc=0.0388	acc_avg=0.0420	acc5=0.1853	acc5_avg=0.1660	loss=4.4828	loss_avg=4.6616	time=2.26it/s
+2025-11-26 04:39:40,650 Eval Loss:4.6616	Eval acc: 4.20
+2025-11-26 04:39:40,650 
+2025-11-26 04:39:40,651 ====================Training Epoch 20====================
+2025-11-26 04:39:56,206 epoch=20	global_step=8100	acc=0.1875	acc_avg=0.2195	loss=3.3230	loss_avg=3.0389	lr=0.0090	|gn|=3.7138	time=1.66it/s
+2025-11-26 04:41:04,921 epoch=20	global_step=8200	acc=0.2031	acc_avg=0.2247	loss=2.9821	loss_avg=2.9538	lr=0.0090	|gn|=3.8492	time=1.66it/s
+2025-11-26 04:42:13,768 epoch=20	global_step=8300	acc=0.2656	acc_avg=0.2246	loss=2.8645	loss_avg=2.9731	lr=0.0090	|gn|=3.5938	time=1.66it/s
+2025-11-26 04:43:22,548 epoch=20	global_step=8400	acc=0.1406	acc_avg=0.2235	loss=3.3300	loss_avg=2.9776	lr=0.0090	|gn|=3.6221	time=1.66it/s
+2025-11-26 04:44:19,750 ====================Eval Epoch 20====================
+2025-11-26 04:44:23,749 epoch=20	global_step=3	acc=0.0388	acc_avg=0.0440	acc5=0.2026	acc5_avg=0.1750	loss=4.8674	loss_avg=5.1973	time=2.26it/s
+2025-11-26 04:44:23,749 Eval Loss:5.1973	Eval acc: 4.40
+2025-11-26 04:44:23,750 
+2025-11-26 04:44:23,750 ====================Training Epoch 21====================
+2025-11-26 04:44:36,458 epoch=21	global_step=8500	acc=0.1875	acc_avg=0.2362	loss=2.8454	loss_avg=2.9091	lr=0.0090	|gn|=3.6402	time=1.66it/s
+2025-11-26 04:45:45,316 epoch=21	global_step=8600	acc=0.2031	acc_avg=0.2399	loss=2.9297	loss_avg=2.8850	lr=0.0090	|gn|=3.5676	time=1.66it/s
+2025-11-26 04:46:54,119 epoch=21	global_step=8700	acc=0.2188	acc_avg=0.2349	loss=2.8874	loss_avg=2.9056	lr=0.0090	|gn|=3.8386	time=1.66it/s
+2025-11-26 04:48:02,901 epoch=21	global_step=8800	acc=0.3125	acc_avg=0.2349	loss=2.8212	loss_avg=2.9137	lr=0.0090	|gn|=3.4818	time=1.66it/s
+2025-11-26 04:49:02,790 ====================Eval Epoch 21====================
+2025-11-26 04:49:06,807 epoch=21	global_step=3	acc=0.0345	acc_avg=0.0290	acc5=0.1422	acc5_avg=0.1210	loss=6.0919	loss_avg=6.0230	time=2.26it/s
+2025-11-26 04:49:06,808 Eval Loss:6.0230	Eval acc: 2.90
+2025-11-26 04:49:06,808 
+2025-11-26 04:49:06,808 ====================Training Epoch 22====================
+2025-11-26 04:49:16,957 epoch=22	global_step=8900	acc=0.1406	acc_avg=0.2404	loss=2.6894	loss_avg=2.8936	lr=0.0089	|gn|=3.6944	time=1.66it/s
+2025-11-26 04:50:25,898 epoch=22	global_step=9000	acc=0.2656	acc_avg=0.2494	loss=2.8995	loss_avg=2.8486	lr=0.0089	|gn|=4.0577	time=1.66it/s
+2025-11-26 04:51:34,915 epoch=22	global_step=9100	acc=0.2031	acc_avg=0.2489	loss=3.2014	loss_avg=2.8591	lr=0.0089	|gn|=3.6848	time=1.66it/s
+2025-11-26 04:52:43,873 epoch=22	global_step=9200	acc=0.2812	acc_avg=0.2472	loss=2.8317	loss_avg=2.8650	lr=0.0089	|gn|=3.5346	time=1.66it/s
+2025-11-26 04:53:46,718 ====================Eval Epoch 22====================
+2025-11-26 04:53:50,771 epoch=22	global_step=3	acc=0.0517	acc_avg=0.0600	acc5=0.2026	acc5_avg=0.1840	loss=4.7338	loss_avg=5.2752	time=2.26it/s
+2025-11-26 04:53:50,772 Eval Loss:5.2752	Eval acc: 6.00
+2025-11-26 04:53:50,772 
+2025-11-26 04:53:50,772 ====================Training Epoch 23====================
+2025-11-26 04:53:58,041 epoch=23	global_step=9300	acc=0.2188	acc_avg=0.2413	loss=2.5737	loss_avg=2.8841	lr=0.0088	|gn|=3.7023	time=1.66it/s
+2025-11-26 04:55:07,051 epoch=23	global_step=9400	acc=0.2344	acc_avg=0.2410	loss=2.6851	loss_avg=2.8577	lr=0.0088	|gn|=3.6797	time=1.66it/s
+2025-11-26 04:56:15,915 epoch=23	global_step=9500	acc=0.2188	acc_avg=0.2433	loss=2.9023	loss_avg=2.8629	lr=0.0088	|gn|=3.8784	time=1.66it/s
+2025-11-26 04:57:24,774 epoch=23	global_step=9600	acc=0.1406	acc_avg=0.2460	loss=3.1530	loss_avg=2.8554	lr=0.0088	|gn|=3.8305	time=1.66it/s
+2025-11-26 04:58:30,257 ====================Eval Epoch 23====================
+2025-11-26 04:58:34,281 epoch=23	global_step=3	acc=0.0603	acc_avg=0.0180	acc5=0.1293	acc5_avg=0.0780	loss=11.8840	loss_avg=12.2975	time=2.26it/s
+2025-11-26 04:58:34,281 Eval Loss:12.2975	Eval acc: 1.80
+2025-11-26 04:58:34,281 
+2025-11-26 04:58:34,281 ====================Training Epoch 24====================
+2025-11-26 04:58:38,800 epoch=24	global_step=9700	acc=0.2969	acc_avg=0.2687	loss=2.6657	loss_avg=2.7674	lr=0.0086	|gn|=3.2186	time=1.66it/s
+2025-11-26 04:59:47,719 epoch=24	global_step=9800	acc=0.2656	acc_avg=0.2619	loss=2.7131	loss_avg=2.7919	lr=0.0086	|gn|=3.3922	time=1.66it/s
+2025-11-26 05:00:56,394 epoch=24	global_step=9900	acc=0.1406	acc_avg=0.2595	loss=3.2167	loss_avg=2.8073	lr=0.0086	|gn|=4.3373	time=1.66it/s
+2025-11-26 05:02:05,190 epoch=24	global_step=10000	acc=0.2344	acc_avg=0.2620	loss=2.7674	loss_avg=2.7970	lr=0.0086	|gn|=4.3072	time=1.66it/s
+2025-11-26 05:03:13,357 ====================Eval Epoch 24====================
+2025-11-26 05:03:17,402 epoch=24	global_step=3	acc=0.0647	acc_avg=0.0510	acc5=0.2414	acc5_avg=0.1870	loss=4.6533	loss_avg=4.9831	time=2.25it/s
+2025-11-26 05:03:17,402 Eval Loss:4.9831	Eval acc: 5.10
+2025-11-26 05:03:17,402 
+2025-11-26 05:03:17,402 ====================Training Epoch 25====================
+2025-11-26 05:03:19,189 epoch=25	global_step=10100	acc=0.2812	acc_avg=0.2812	loss=2.6348	loss_avg=2.6348	lr=0.0085	|gn|=3.6126	time=1.66it/s
+2025-11-26 05:04:28,169 epoch=25	global_step=10200	acc=0.2344	acc_avg=0.2679	loss=2.8346	loss_avg=2.7458	lr=0.0085	|gn|=4.0503	time=1.66it/s
+2025-11-26 05:05:36,977 epoch=25	global_step=10300	acc=0.2344	acc_avg=0.2681	loss=2.9839	loss_avg=2.7449	lr=0.0085	|gn|=3.9513	time=1.66it/s
+2025-11-26 05:06:46,050 epoch=25	global_step=10400	acc=0.2188	acc_avg=0.2692	loss=3.0201	loss_avg=2.7423	lr=0.0085	|gn|=3.8150	time=1.66it/s
+2025-11-26 05:07:55,069 epoch=25	global_step=10500	acc=0.2812	acc_avg=0.2693	loss=2.7444	loss_avg=2.7385	lr=0.0085	|gn|=3.9094	time=1.66it/s
+2025-11-26 05:07:57,223 ====================Eval Epoch 25====================
+2025-11-26 05:08:01,256 epoch=25	global_step=3	acc=0.0474	acc_avg=0.0310	acc5=0.2198	acc5_avg=0.1530	loss=4.7714	loss_avg=5.4326	time=2.25it/s
+2025-11-26 05:08:01,256 Eval Loss:5.4326	Eval acc: 3.10
+2025-11-26 05:08:01,257 
+2025-11-26 05:08:01,257 ====================Training Epoch 26====================
+2025-11-26 05:09:09,464 epoch=26	global_step=10600	acc=0.2031	acc_avg=0.2672	loss=2.8690	loss_avg=2.7427	lr=0.0084	|gn|=3.8444	time=1.66it/s
+2025-11-26 05:10:18,757 epoch=26	global_step=10700	acc=0.2656	acc_avg=0.2694	loss=2.4721	loss_avg=2.7287	lr=0.0084	|gn|=3.5844	time=1.66it/s
+2025-11-26 05:11:27,913 epoch=26	global_step=10800	acc=0.3125	acc_avg=0.2744	loss=2.6938	loss_avg=2.7292	lr=0.0084	|gn|=3.7783	time=1.66it/s
+2025-11-26 05:12:37,138 epoch=26	global_step=10900	acc=0.2188	acc_avg=0.2751	loss=2.8135	loss_avg=2.7241	lr=0.0084	|gn|=4.0527	time=1.66it/s
+2025-11-26 05:12:42,050 ====================Eval Epoch 26====================
+2025-11-26 05:12:46,080 epoch=26	global_step=3	acc=0.0431	acc_avg=0.0340	acc5=0.1595	acc5_avg=0.1220	loss=6.5647	loss_avg=6.8867	time=2.26it/s
+2025-11-26 05:12:46,081 Eval Loss:6.8867	Eval acc: 3.40
+2025-11-26 05:12:46,081 
+2025-11-26 05:12:46,081 ====================Training Epoch 27====================
+2025-11-26 05:13:51,375 epoch=27	global_step=11000	acc=0.2812	acc_avg=0.2841	loss=2.5175	loss_avg=2.7046	lr=0.0083	|gn|=4.0434	time=1.66it/s
+2025-11-26 05:15:00,359 epoch=27	global_step=11100	acc=0.2500	acc_avg=0.2830	loss=2.8857	loss_avg=2.7118	lr=0.0083	|gn|=4.4371	time=1.66it/s
+2025-11-26 05:16:09,290 epoch=27	global_step=11200	acc=0.1875	acc_avg=0.2829	loss=2.9808	loss_avg=2.7023	lr=0.0083	|gn|=4.3778	time=1.66it/s
+2025-11-26 05:17:18,426 epoch=27	global_step=11300	acc=0.2500	acc_avg=0.2826	loss=2.7854	loss_avg=2.7021	lr=0.0083	|gn|=3.8285	time=1.66it/s
+2025-11-26 05:17:26,065 ====================Eval Epoch 27====================
+2025-11-26 05:17:30,098 epoch=27	global_step=3	acc=0.0388	acc_avg=0.0450	acc5=0.1595	acc5_avg=0.1460	loss=5.2793	loss_avg=5.5719	time=2.26it/s
+2025-11-26 05:17:30,098 Eval Loss:5.5719	Eval acc: 4.50
+2025-11-26 05:17:30,099 
+2025-11-26 05:17:30,099 ====================Training Epoch 28====================
+2025-11-26 05:18:32,802 epoch=28	global_step=11400	acc=0.2500	acc_avg=0.2992	loss=2.2843	loss_avg=2.5987	lr=0.0082	|gn|=3.6706	time=1.67it/s
+2025-11-26 05:19:41,789 epoch=28	global_step=11500	acc=0.2969	acc_avg=0.2947	loss=2.5642	loss_avg=2.6176	lr=0.0082	|gn|=3.9345	time=1.67it/s
+2025-11-26 05:20:50,723 epoch=28	global_step=11600	acc=0.3281	acc_avg=0.2936	loss=2.5165	loss_avg=2.6176	lr=0.0082	|gn|=4.0518	time=1.66it/s
+2025-11-26 05:21:59,739 epoch=28	global_step=11700	acc=0.3438	acc_avg=0.2945	loss=2.4391	loss_avg=2.6211	lr=0.0082	|gn|=3.7033	time=1.66it/s
+2025-11-26 05:22:10,243 ====================Eval Epoch 28====================
+2025-11-26 05:22:14,377 epoch=28	global_step=3	acc=0.0690	acc_avg=0.0510	acc5=0.2284	acc5_avg=0.1760	loss=5.0275	loss_avg=5.3148	time=2.26it/s
+2025-11-26 05:22:14,377 Eval Loss:5.3148	Eval acc: 5.10
+2025-11-26 05:22:14,378 
+2025-11-26 05:22:14,378 ====================Training Epoch 29====================
+2025-11-26 05:23:14,384 epoch=29	global_step=11800	acc=0.3125	acc_avg=0.2949	loss=2.4761	loss_avg=2.6128	lr=0.0081	|gn|=3.9093	time=1.66it/s
+2025-11-26 05:24:23,454 epoch=29	global_step=11900	acc=0.3281	acc_avg=0.3026	loss=2.5871	loss_avg=2.6035	lr=0.0081	|gn|=4.0063	time=1.66it/s
+2025-11-26 05:25:32,438 epoch=29	global_step=12000	acc=0.2344	acc_avg=0.3018	loss=2.7359	loss_avg=2.6001	lr=0.0081	|gn|=3.8803	time=1.66it/s
+2025-11-26 05:26:41,315 epoch=29	global_step=12100	acc=0.1875	acc_avg=0.2993	loss=2.8241	loss_avg=2.5966	lr=0.0081	|gn|=4.1904	time=1.66it/s
+2025-11-26 05:26:54,506 ====================Eval Epoch 29====================
+2025-11-26 05:26:58,499 epoch=29	global_step=3	acc=0.0431	acc_avg=0.0560	acc5=0.1983	acc5_avg=0.2120	loss=4.8746	loss_avg=4.9803	time=2.25it/s
+2025-11-26 05:26:58,499 Eval Loss:4.9803	Eval acc: 5.60
+2025-11-26 05:26:58,499 
+2025-11-26 05:26:58,499 ====================Training Epoch 30====================
+2025-11-26 05:27:55,568 epoch=30	global_step=12200	acc=0.2500	acc_avg=0.3036	loss=2.7238	loss_avg=2.5910	lr=0.0079	|gn|=4.2661	time=1.66it/s
+2025-11-26 05:29:04,378 epoch=30	global_step=12300	acc=0.3750	acc_avg=0.3056	loss=2.6193	loss_avg=2.5780	lr=0.0079	|gn|=4.1387	time=1.67it/s
+2025-11-26 05:30:13,172 epoch=30	global_step=12400	acc=0.2656	acc_avg=0.3050	loss=2.5327	loss_avg=2.5749	lr=0.0079	|gn|=4.5052	time=1.67it/s
+2025-11-26 05:31:21,976 epoch=30	global_step=12500	acc=0.3750	acc_avg=0.3058	loss=2.2906	loss_avg=2.5751	lr=0.0079	|gn|=3.5347	time=1.66it/s
+2025-11-26 05:31:37,840 ====================Eval Epoch 30====================
+2025-11-26 05:31:41,860 epoch=30	global_step=3	acc=0.0690	acc_avg=0.0620	acc5=0.2500	acc5_avg=0.2090	loss=4.6863	loss_avg=4.9800	time=2.25it/s
+2025-11-26 05:31:41,861 Eval Loss:4.9800	Eval acc: 6.20
+2025-11-26 05:31:41,861 
+2025-11-26 05:31:41,861 ====================Training Epoch 31====================
+2025-11-26 05:32:36,043 epoch=31	global_step=12600	acc=0.3906	acc_avg=0.3157	loss=2.3345	loss_avg=2.5337	lr=0.0078	|gn|=4.1531	time=1.66it/s
+2025-11-26 05:33:44,984 epoch=31	global_step=12700	acc=0.2344	acc_avg=0.3120	loss=2.6434	loss_avg=2.5561	lr=0.0078	|gn|=4.2437	time=1.66it/s
+2025-11-26 05:34:53,878 epoch=31	global_step=12800	acc=0.2812	acc_avg=0.3158	loss=2.6704	loss_avg=2.5344	lr=0.0078	|gn|=4.0938	time=1.67it/s
+2025-11-26 05:36:02,898 epoch=31	global_step=12900	acc=0.2969	acc_avg=0.3152	loss=2.9122	loss_avg=2.5445	lr=0.0078	|gn|=3.9792	time=1.67it/s
+2025-11-26 05:36:21,563 ====================Eval Epoch 31====================
+2025-11-26 05:36:25,619 epoch=31	global_step=3	acc=0.0431	acc_avg=0.0300	acc5=0.1638	acc5_avg=0.1220	loss=5.0911	loss_avg=5.3454	time=2.26it/s
+2025-11-26 05:36:25,619 Eval Loss:5.3454	Eval acc: 3.00
+2025-11-26 05:36:25,620 
+2025-11-26 05:36:25,620 ====================Training Epoch 32====================
+2025-11-26 05:37:17,164 epoch=32	global_step=13000	acc=0.2656	acc_avg=0.3191	loss=2.4859	loss_avg=2.4935	lr=0.0077	|gn|=3.4093	time=1.66it/s
+2025-11-26 05:38:26,141 epoch=32	global_step=13100	acc=0.2344	acc_avg=0.3191	loss=2.8581	loss_avg=2.5076	lr=0.0077	|gn|=4.6999	time=1.66it/s
+2025-11-26 05:39:35,147 epoch=32	global_step=13200	acc=0.3594	acc_avg=0.3166	loss=2.4045	loss_avg=2.5174	lr=0.0077	|gn|=3.9746	time=1.66it/s
+2025-11-26 05:40:44,156 epoch=32	global_step=13300	acc=0.2500	acc_avg=0.3154	loss=2.3082	loss_avg=2.5238	lr=0.0077	|gn|=4.0408	time=1.66it/s
+2025-11-26 05:41:05,554 ====================Eval Epoch 32====================
+2025-11-26 05:41:09,586 epoch=32	global_step=3	acc=0.0086	acc_avg=0.0170	acc5=0.0819	acc5_avg=0.0820	loss=15.6784	loss_avg=15.1332	time=2.26it/s
+2025-11-26 05:41:09,587 Eval Loss:15.1332	Eval acc: 1.70
+2025-11-26 05:41:09,587 
+2025-11-26 05:41:09,587 ====================Training Epoch 33====================
+2025-11-26 05:41:58,360 epoch=33	global_step=13400	acc=0.2812	acc_avg=0.3317	loss=2.4786	loss_avg=2.4763	lr=0.0075	|gn|=4.3854	time=1.66it/s
+2025-11-26 05:43:07,435 epoch=33	global_step=13500	acc=0.3906	acc_avg=0.3274	loss=2.0998	loss_avg=2.4771	lr=0.0075	|gn|=3.5061	time=1.67it/s
+2025-11-26 05:44:16,404 epoch=33	global_step=13600	acc=0.3750	acc_avg=0.3283	loss=2.4526	loss_avg=2.4803	lr=0.0075	|gn|=4.1972	time=1.66it/s
+2025-11-26 05:45:25,340 epoch=33	global_step=13700	acc=0.3750	acc_avg=0.3266	loss=2.3607	loss_avg=2.4747	lr=0.0075	|gn|=3.8274	time=1.66it/s
+2025-11-26 05:45:49,526 ====================Eval Epoch 33====================
+2025-11-26 05:45:53,780 epoch=33	global_step=3	acc=0.0948	acc_avg=0.0730	acc5=0.2672	acc5_avg=0.2080	loss=4.8053	loss_avg=5.2348	time=2.26it/s
+2025-11-26 05:45:53,781 Eval Loss:5.2348	Eval acc: 7.30
+2025-11-26 05:45:53,781 
+2025-11-26 05:45:53,781 ====================Training Epoch 34====================
+2025-11-26 05:46:40,036 epoch=34	global_step=13800	acc=0.2969	acc_avg=0.3291	loss=2.7371	loss_avg=2.4673	lr=0.0074	|gn|=4.5718	time=1.67it/s
+2025-11-26 05:47:49,032 epoch=34	global_step=13900	acc=0.3125	acc_avg=0.3292	loss=2.4239	loss_avg=2.4583	lr=0.0074	|gn|=3.7446	time=1.67it/s
+2025-11-26 05:48:57,940 epoch=34	global_step=14000	acc=0.4375	acc_avg=0.3312	loss=2.3870	loss_avg=2.4504	lr=0.0074	|gn|=3.8238	time=1.66it/s
+2025-11-26 05:50:06,858 epoch=34	global_step=14100	acc=0.2031	acc_avg=0.3318	loss=2.7755	loss_avg=2.4469	lr=0.0074	|gn|=4.1520	time=1.66it/s
+2025-11-26 05:50:33,711 ====================Eval Epoch 34====================
+2025-11-26 05:50:37,774 epoch=34	global_step=3	acc=0.0690	acc_avg=0.0790	acc5=0.2414	acc5_avg=0.2230	loss=4.5749	loss_avg=4.8697	time=2.26it/s
+2025-11-26 05:50:37,775 Eval Loss:4.8697	Eval acc: 7.90
+2025-11-26 05:50:37,775 
+2025-11-26 05:50:37,775 ====================Training Epoch 35====================
+2025-11-26 05:51:21,017 epoch=35	global_step=14200	acc=0.3906	acc_avg=0.3404	loss=2.3317	loss_avg=2.4141	lr=0.0073	|gn|=3.6827	time=1.66it/s
+2025-11-26 05:52:30,112 epoch=35	global_step=14300	acc=0.2656	acc_avg=0.3371	loss=2.5285	loss_avg=2.4240	lr=0.0073	|gn|=4.0770	time=1.66it/s
+2025-11-26 05:53:39,214 epoch=35	global_step=14400	acc=0.4219	acc_avg=0.3382	loss=2.0997	loss_avg=2.4188	lr=0.0073	|gn|=4.4086	time=1.66it/s
+2025-11-26 05:54:48,289 epoch=35	global_step=14500	acc=0.3281	acc_avg=0.3378	loss=2.4456	loss_avg=2.4239	lr=0.0073	|gn|=4.2930	time=1.66it/s
+2025-11-26 05:55:17,982 ====================Eval Epoch 35====================
+2025-11-26 05:55:22,027 epoch=35	global_step=3	acc=0.0647	acc_avg=0.0590	acc5=0.2284	acc5_avg=0.2040	loss=5.1108	loss_avg=5.2566	time=2.25it/s
+2025-11-26 05:55:22,027 Eval Loss:5.2566	Eval acc: 5.90
+2025-11-26 05:55:22,027 
+2025-11-26 05:55:22,028 ====================Training Epoch 36====================
+2025-11-26 05:56:02,637 epoch=36	global_step=14600	acc=0.2656	acc_avg=0.3492	loss=2.4633	loss_avg=2.3601	lr=0.0071	|gn|=4.1755	time=1.66it/s
+2025-11-26 05:57:11,711 epoch=36	global_step=14700	acc=0.3750	acc_avg=0.3494	loss=2.3827	loss_avg=2.3761	lr=0.0071	|gn|=3.7860	time=1.66it/s
+2025-11-26 05:58:20,793 epoch=36	global_step=14800	acc=0.3906	acc_avg=0.3495	loss=2.1567	loss_avg=2.3648	lr=0.0071	|gn|=3.8958	time=1.66it/s
+2025-11-26 05:59:29,880 epoch=36	global_step=14900	acc=0.3438	acc_avg=0.3459	loss=2.4384	loss_avg=2.3795	lr=0.0071	|gn|=4.1536	time=1.66it/s
+2025-11-26 06:00:02,425 ====================Eval Epoch 36====================
+2025-11-26 06:00:06,436 epoch=36	global_step=3	acc=0.0733	acc_avg=0.0760	acc5=0.2974	acc5_avg=0.2340	loss=4.4542	loss_avg=5.0877	time=2.25it/s
+2025-11-26 06:00:06,436 Eval Loss:5.0877	Eval acc: 7.60
+2025-11-26 06:00:06,436 
+2025-11-26 06:00:06,436 ====================Training Epoch 37====================
+2025-11-26 06:00:44,210 epoch=37	global_step=15000	acc=0.3281	acc_avg=0.3479	loss=2.3402	loss_avg=2.4222	lr=0.0070	|gn|=4.0505	time=1.66it/s
+2025-11-26 06:01:53,208 epoch=37	global_step=15100	acc=0.4219	acc_avg=0.3510	loss=2.3105	loss_avg=2.3748	lr=0.0070	|gn|=3.9006	time=1.66it/s
+2025-11-26 06:03:02,206 epoch=37	global_step=15200	acc=0.3594	acc_avg=0.3511	loss=2.3375	loss_avg=2.3685	lr=0.0070	|gn|=4.2474	time=1.66it/s
+2025-11-26 06:04:11,124 epoch=37	global_step=15300	acc=0.4375	acc_avg=0.3491	loss=2.2427	loss_avg=2.3785	lr=0.0070	|gn|=4.1096	time=1.66it/s
+2025-11-26 06:04:46,279 ====================Eval Epoch 37====================
+2025-11-26 06:04:50,302 epoch=37	global_step=3	acc=0.0991	acc_avg=0.0770	acc5=0.2888	acc5_avg=0.2480	loss=4.7466	loss_avg=5.2026	time=2.26it/s
+2025-11-26 06:04:50,302 Eval Loss:5.2026	Eval acc: 7.70
+2025-11-26 06:04:50,303 
+2025-11-26 06:04:50,303 ====================Training Epoch 38====================
+2025-11-26 06:05:25,286 epoch=38	global_step=15400	acc=0.2969	acc_avg=0.3635	loss=2.3735	loss_avg=2.2939	lr=0.0068	|gn|=4.3277	time=1.66it/s
+2025-11-26 06:06:34,190 epoch=38	global_step=15500	acc=0.3594	acc_avg=0.3665	loss=2.2848	loss_avg=2.3104	lr=0.0068	|gn|=3.9427	time=1.66it/s
+2025-11-26 06:07:42,951 epoch=38	global_step=15600	acc=0.3594	acc_avg=0.3621	loss=2.5587	loss_avg=2.3191	lr=0.0068	|gn|=4.6451	time=1.66it/s
+2025-11-26 06:08:51,641 epoch=38	global_step=15700	acc=0.3906	acc_avg=0.3601	loss=2.3850	loss_avg=2.3266	lr=0.0068	|gn|=4.0289	time=1.66it/s
+2025-11-26 06:09:29,530 ====================Eval Epoch 38====================
+2025-11-26 06:09:33,533 epoch=38	global_step=3	acc=0.0690	acc_avg=0.0590	acc5=0.2716	acc5_avg=0.2070	loss=5.0054	loss_avg=5.6640	time=2.25it/s
+2025-11-26 06:09:33,533 Eval Loss:5.6640	Eval acc: 5.90
+2025-11-26 06:09:33,533 
+2025-11-26 06:09:33,533 ====================Training Epoch 39====================
+2025-11-26 06:10:05,593 epoch=39	global_step=15800	acc=0.3438	acc_avg=0.3410	loss=2.4110	loss_avg=2.3505	lr=0.0067	|gn|=4.1352	time=1.66it/s
+2025-11-26 06:11:14,418 epoch=39	global_step=15900	acc=0.4375	acc_avg=0.3543	loss=2.1559	loss_avg=2.3213	lr=0.0067	|gn|=4.0128	time=1.67it/s
+2025-11-26 06:12:23,314 epoch=39	global_step=16000	acc=0.4688	acc_avg=0.3584	loss=2.0760	loss_avg=2.3194	lr=0.0067	|gn|=3.8987	time=1.66it/s
+2025-11-26 06:13:32,078 epoch=39	global_step=16100	acc=0.4688	acc_avg=0.3573	loss=2.1654	loss_avg=2.3214	lr=0.0067	|gn|=4.1570	time=1.66it/s
+2025-11-26 06:14:12,791 ====================Eval Epoch 39====================
+2025-11-26 06:14:16,845 epoch=39	global_step=3	acc=0.0474	acc_avg=0.0730	acc5=0.1983	acc5_avg=0.2040	loss=4.7018	loss_avg=4.8411	time=2.25it/s
+2025-11-26 06:14:16,846 Eval Loss:4.8411	Eval acc: 7.30
+2025-11-26 06:14:16,846 
+2025-11-26 06:14:16,846 ====================Training Epoch 40====================
+2025-11-26 06:14:46,293 epoch=40	global_step=16200	acc=0.3594	acc_avg=0.3792	loss=2.3263	loss_avg=2.2771	lr=0.0065	|gn|=4.6655	time=1.66it/s
+2025-11-26 06:15:55,291 epoch=40	global_step=16300	acc=0.4531	acc_avg=0.3643	loss=2.2145	loss_avg=2.3128	lr=0.0065	|gn|=4.2139	time=1.66it/s
+2025-11-26 06:17:04,292 epoch=40	global_step=16400	acc=0.3906	acc_avg=0.3697	loss=2.2100	loss_avg=2.2924	lr=0.0065	|gn|=4.6932	time=1.66it/s
+2025-11-26 06:18:13,064 epoch=40	global_step=16500	acc=0.4531	acc_avg=0.3668	loss=2.0634	loss_avg=2.2957	lr=0.0065	|gn|=4.1020	time=1.66it/s
+2025-11-26 06:18:56,412 ====================Eval Epoch 40====================
+2025-11-26 06:19:00,424 epoch=40	global_step=3	acc=0.0776	acc_avg=0.0500	acc5=0.2112	acc5_avg=0.1910	loss=5.2098	loss_avg=6.0244	time=2.26it/s
+2025-11-26 06:19:00,424 Eval Loss:6.0244	Eval acc: 5.00
+2025-11-26 06:19:00,425 
+2025-11-26 06:19:00,425 ====================Training Epoch 41====================
+2025-11-26 06:19:26,991 epoch=41	global_step=16600	acc=0.4375	acc_avg=0.3657	loss=2.0000	loss_avg=2.2665	lr=0.0064	|gn|=3.8317	time=1.67it/s
+2025-11-26 06:20:35,813 epoch=41	global_step=16700	acc=0.3281	acc_avg=0.3716	loss=2.5431	loss_avg=2.2724	lr=0.0064	|gn|=4.8207	time=1.67it/s
+2025-11-26 06:21:44,512 epoch=41	global_step=16800	acc=0.2812	acc_avg=0.3710	loss=2.5240	loss_avg=2.2582	lr=0.0064	|gn|=4.1679	time=1.67it/s
+2025-11-26 06:22:53,142 epoch=41	global_step=16900	acc=0.4062	acc_avg=0.3728	loss=2.1517	loss_avg=2.2559	lr=0.0064	|gn|=5.4657	time=1.67it/s
+2025-11-26 06:23:39,320 ====================Eval Epoch 41====================
+2025-11-26 06:23:43,394 epoch=41	global_step=3	acc=0.0517	acc_avg=0.0530	acc5=0.2026	acc5_avg=0.1840	loss=5.0634	loss_avg=5.4997	time=2.26it/s
+2025-11-26 06:23:43,394 Eval Loss:5.4997	Eval acc: 5.30
+2025-11-26 06:23:43,395 
+2025-11-26 06:23:43,395 ====================Training Epoch 42====================
+2025-11-26 06:24:07,256 epoch=42	global_step=17000	acc=0.2656	acc_avg=0.3892	loss=2.6567	loss_avg=2.2152	lr=0.0062	|gn|=4.8992	time=1.66it/s
+2025-11-26 06:25:15,932 epoch=42	global_step=17100	acc=0.4219	acc_avg=0.3869	loss=2.1552	loss_avg=2.2087	lr=0.0062	|gn|=4.1790	time=1.66it/s
+2025-11-26 06:26:24,688 epoch=42	global_step=17200	acc=0.3438	acc_avg=0.3802	loss=2.4537	loss_avg=2.2334	lr=0.0062	|gn|=4.4592	time=1.66it/s
+2025-11-26 06:27:33,442 epoch=42	global_step=17300	acc=0.3750	acc_avg=0.3797	loss=2.2564	loss_avg=2.2242	lr=0.0062	|gn|=4.4650	time=1.66it/s
+2025-11-26 06:28:22,351 ====================Eval Epoch 42====================
+2025-11-26 06:28:26,336 epoch=42	global_step=3	acc=0.0991	acc_avg=0.0820	acc5=0.2931	acc5_avg=0.2470	loss=4.3626	loss_avg=4.9620	time=2.26it/s
+2025-11-26 06:28:26,337 Eval Loss:4.9620	Eval acc: 8.20
+2025-11-26 06:28:26,337 
+2025-11-26 06:28:26,337 ====================Training Epoch 43====================
+2025-11-26 06:28:47,387 epoch=43	global_step=17400	acc=0.3594	acc_avg=0.3982	loss=2.4427	loss_avg=2.1504	lr=0.0061	|gn|=4.5849	time=1.66it/s
+2025-11-26 06:29:56,402 epoch=43	global_step=17500	acc=0.3125	acc_avg=0.3857	loss=2.5215	loss_avg=2.2016	lr=0.0061	|gn|=4.5250	time=1.66it/s
+2025-11-26 06:31:05,311 epoch=43	global_step=17600	acc=0.4531	acc_avg=0.3852	loss=2.0627	loss_avg=2.2139	lr=0.0061	|gn|=3.8835	time=1.66it/s
+2025-11-26 06:32:14,023 epoch=43	global_step=17700	acc=0.3281	acc_avg=0.3860	loss=2.2853	loss_avg=2.2127	lr=0.0061	|gn|=4.2466	time=1.66it/s
+2025-11-26 06:33:05,772 ====================Eval Epoch 43====================
+2025-11-26 06:33:09,770 epoch=43	global_step=3	acc=0.0690	acc_avg=0.0610	acc5=0.2328	acc5_avg=0.1980	loss=4.6600	loss_avg=5.1232	time=2.26it/s
+2025-11-26 06:33:09,770 Eval Loss:5.1232	Eval acc: 6.10
+2025-11-26 06:33:09,771 
+2025-11-26 06:33:09,771 ====================Training Epoch 44====================
+2025-11-26 06:33:28,109 epoch=44	global_step=17800	acc=0.4062	acc_avg=0.3650	loss=2.0412	loss_avg=2.2484	lr=0.0059	|gn|=4.0565	time=1.66it/s
+2025-11-26 06:34:36,827 epoch=44	global_step=17900	acc=0.4219	acc_avg=0.3792	loss=1.8648	loss_avg=2.2148	lr=0.0059	|gn|=3.9298	time=1.66it/s
+2025-11-26 06:35:45,615 epoch=44	global_step=18000	acc=0.4844	acc_avg=0.3844	loss=1.7809	loss_avg=2.2106	lr=0.0059	|gn|=3.9497	time=1.66it/s
+2025-11-26 06:36:54,315 epoch=44	global_step=18100	acc=0.3750	acc_avg=0.3838	loss=2.4127	loss_avg=2.2061	lr=0.0059	|gn|=4.0283	time=1.66it/s
+2025-11-26 06:37:48,675 ====================Eval Epoch 44====================
+2025-11-26 06:37:52,763 epoch=44	global_step=3	acc=0.1034	acc_avg=0.0590	acc5=0.2284	acc5_avg=0.1790	loss=6.6805	loss_avg=7.4681	time=2.25it/s
+2025-11-26 06:37:52,763 Eval Loss:7.4681	Eval acc: 5.90
+2025-11-26 06:37:52,764 
+2025-11-26 06:37:52,764 ====================Training Epoch 45====================
+2025-11-26 06:38:08,324 epoch=45	global_step=18200	acc=0.3438	acc_avg=0.3750	loss=2.0913	loss_avg=2.2222	lr=0.0058	|gn|=4.0194	time=1.66it/s
+2025-11-26 06:39:16,992 epoch=45	global_step=18300	acc=0.3594	acc_avg=0.3813	loss=2.1552	loss_avg=2.2082	lr=0.0058	|gn|=4.1559	time=1.66it/s
+2025-11-26 06:40:25,700 epoch=45	global_step=18400	acc=0.3750	acc_avg=0.3868	loss=2.4253	loss_avg=2.1894	lr=0.0058	|gn|=4.1680	time=1.66it/s
+2025-11-26 06:41:34,790 epoch=45	global_step=18500	acc=0.3906	acc_avg=0.3874	loss=2.1567	loss_avg=2.1878	lr=0.0058	|gn|=4.4198	time=1.66it/s
+2025-11-26 06:42:31,956 ====================Eval Epoch 45====================
+2025-11-26 06:42:36,056 epoch=45	global_step=3	acc=0.0862	acc_avg=0.0610	acc5=0.2974	acc5_avg=0.2280	loss=4.6729	loss_avg=5.4824	time=2.25it/s
+2025-11-26 06:42:36,057 Eval Loss:5.4824	Eval acc: 6.10
+2025-11-26 06:42:36,057 
+2025-11-26 06:42:36,057 ====================Training Epoch 46====================
+2025-11-26 06:42:48,855 epoch=46	global_step=18600	acc=0.4844	acc_avg=0.4127	loss=2.0909	loss_avg=2.1649	lr=0.0056	|gn|=4.4920	time=1.66it/s
+2025-11-26 06:43:57,827 epoch=46	global_step=18700	acc=0.3125	acc_avg=0.4044	loss=2.3123	loss_avg=2.1532	lr=0.0056	|gn|=4.3710	time=1.66it/s
+2025-11-26 06:45:06,514 epoch=46	global_step=18800	acc=0.3594	acc_avg=0.4001	loss=2.1097	loss_avg=2.1630	lr=0.0056	|gn|=4.0026	time=1.66it/s
+2025-11-26 06:46:15,291 epoch=46	global_step=18900	acc=0.4531	acc_avg=0.4017	loss=2.0867	loss_avg=2.1582	lr=0.0056	|gn|=4.4235	time=1.66it/s
+2025-11-26 06:47:15,291 ====================Eval Epoch 46====================
+2025-11-26 06:47:19,353 epoch=46	global_step=3	acc=0.1207	acc_avg=0.0760	acc5=0.2888	acc5_avg=0.2270	loss=4.2533	loss_avg=4.8647	time=2.26it/s
+2025-11-26 06:47:19,353 Eval Loss:4.8647	Eval acc: 7.60
+2025-11-26 06:47:19,354 
+2025-11-26 06:47:19,354 ====================Training Epoch 47====================
+2025-11-26 06:47:29,492 epoch=47	global_step=19000	acc=0.4062	acc_avg=0.4002	loss=2.2489	loss_avg=2.0601	lr=0.0055	|gn|=4.7122	time=1.66it/s
+2025-11-26 06:48:38,181 epoch=47	global_step=19100	acc=0.4688	acc_avg=0.4107	loss=1.9471	loss_avg=2.0932	lr=0.0055	|gn|=4.0750	time=1.66it/s
+2025-11-26 06:49:46,958 epoch=47	global_step=19200	acc=0.3125	acc_avg=0.4054	loss=2.5477	loss_avg=2.1174	lr=0.0055	|gn|=5.0827	time=1.66it/s
+2025-11-26 06:50:55,874 epoch=47	global_step=19300	acc=0.3750	acc_avg=0.4064	loss=2.1029	loss_avg=2.1115	lr=0.0055	|gn|=4.0753	time=1.66it/s
+2025-11-26 06:51:58,479 ====================Eval Epoch 47====================
+2025-11-26 06:52:02,498 epoch=47	global_step=3	acc=0.0991	acc_avg=0.0750	acc5=0.3362	acc5_avg=0.2400	loss=4.1551	loss_avg=4.8237	time=2.26it/s
+2025-11-26 06:52:02,499 Eval Loss:4.8237	Eval acc: 7.50
+2025-11-26 06:52:02,499 
+2025-11-26 06:52:02,499 ====================Training Epoch 48====================
+2025-11-26 06:52:09,814 epoch=48	global_step=19400	acc=0.4219	acc_avg=0.4184	loss=2.0213	loss_avg=2.1025	lr=0.0053	|gn|=4.3982	time=1.66it/s
+2025-11-26 06:53:18,663 epoch=48	global_step=19500	acc=0.5000	acc_avg=0.4156	loss=1.6642	loss_avg=2.1190	lr=0.0053	|gn|=3.6421	time=1.66it/s
+2025-11-26 06:54:27,670 epoch=48	global_step=19600	acc=0.4219	acc_avg=0.4132	loss=2.0157	loss_avg=2.1162	lr=0.0053	|gn|=4.9861	time=1.66it/s
+2025-11-26 06:55:36,542 epoch=48	global_step=19700	acc=0.3906	acc_avg=0.4123	loss=2.1642	loss_avg=2.1155	lr=0.0053	|gn|=5.1677	time=1.66it/s
+2025-11-26 06:56:42,092 ====================Eval Epoch 48====================
+2025-11-26 06:56:46,059 epoch=48	global_step=3	acc=0.1078	acc_avg=0.0820	acc5=0.3319	acc5_avg=0.2450	loss=4.2301	loss_avg=4.8534	time=2.26it/s
+2025-11-26 06:56:46,059 Eval Loss:4.8534	Eval acc: 8.20
+2025-11-26 06:56:46,059 
+2025-11-26 06:56:46,059 ====================Training Epoch 49====================
+2025-11-26 06:56:50,576 epoch=49	global_step=19800	acc=0.4688	acc_avg=0.4594	loss=1.9478	loss_avg=1.9821	lr=0.0052	|gn|=4.3998	time=1.66it/s
+2025-11-26 06:57:59,360 epoch=49	global_step=19900	acc=0.3750	acc_avg=0.4107	loss=2.1856	loss_avg=2.0878	lr=0.0052	|gn|=4.5630	time=1.67it/s
+2025-11-26 06:59:07,937 epoch=49	global_step=20000	acc=0.3906	acc_avg=0.4111	loss=2.2289	loss_avg=2.0870	lr=0.0052	|gn|=4.8038	time=1.66it/s
+2025-11-26 07:00:16,581 epoch=49	global_step=20100	acc=0.4062	acc_avg=0.4091	loss=1.8148	loss_avg=2.0976	lr=0.0052	|gn|=4.3643	time=1.67it/s
+2025-11-26 07:01:24,619 ====================Eval Epoch 49====================
+2025-11-26 07:01:28,603 epoch=49	global_step=3	acc=0.1164	acc_avg=0.0810	acc5=0.3534	acc5_avg=0.2400	loss=4.5734	loss_avg=5.5290	time=2.26it/s
+2025-11-26 07:01:28,603 Eval Loss:5.5290	Eval acc: 8.10
+2025-11-26 07:01:28,603 
+2025-11-26 07:01:28,604 ====================Training Epoch 50====================
+2025-11-26 07:01:30,379 epoch=50	global_step=20200	acc=0.3281	acc_avg=0.3281	loss=2.4652	loss_avg=2.4652	lr=0.0050	|gn|=4.6496	time=1.66it/s
+2025-11-26 07:02:39,241 epoch=50	global_step=20300	acc=0.4688	acc_avg=0.4114	loss=2.0191	loss_avg=2.0749	lr=0.0050	|gn|=4.4733	time=1.66it/s
+2025-11-26 07:03:48,209 epoch=50	global_step=20400	acc=0.4844	acc_avg=0.4093	loss=2.0778	loss_avg=2.0907	lr=0.0050	|gn|=5.1450	time=1.66it/s
+2025-11-26 07:04:56,929 epoch=50	global_step=20500	acc=0.4375	acc_avg=0.4123	loss=1.8103	loss_avg=2.0786	lr=0.0050	|gn|=4.1302	time=1.66it/s
+2025-11-26 07:06:05,659 epoch=50	global_step=20600	acc=0.5000	acc_avg=0.4180	loss=1.7797	loss_avg=2.0681	lr=0.0050	|gn|=4.4846	time=1.66it/s
+2025-11-26 07:06:07,796 ====================Eval Epoch 50====================
+2025-11-26 07:06:11,942 epoch=50	global_step=3	acc=0.0991	acc_avg=0.0990	acc5=0.3147	acc5_avg=0.2640	loss=4.4826	loss_avg=4.9461	time=2.26it/s
+2025-11-26 07:06:11,943 Eval Loss:4.9461	Eval acc: 9.90
+2025-11-26 07:06:11,943 
+2025-11-26 07:06:11,943 ====================Training Epoch 51====================
+2025-11-26 07:07:19,885 epoch=51	global_step=20700	acc=0.5156	acc_avg=0.4233	loss=1.6740	loss_avg=2.0472	lr=0.0048	|gn|=3.9846	time=1.66it/s
+2025-11-26 07:08:28,871 epoch=51	global_step=20800	acc=0.3750	acc_avg=0.4226	loss=2.3581	loss_avg=2.0496	lr=0.0048	|gn|=4.9408	time=1.66it/s
+2025-11-26 07:09:37,614 epoch=51	global_step=20900	acc=0.3438	acc_avg=0.4257	loss=2.2194	loss_avg=2.0451	lr=0.0048	|gn|=4.8610	time=1.66it/s
+2025-11-26 07:10:46,446 epoch=51	global_step=21000	acc=0.3906	acc_avg=0.4231	loss=2.3066	loss_avg=2.0497	lr=0.0048	|gn|=5.0159	time=1.66it/s
+2025-11-26 07:10:51,343 ====================Eval Epoch 51====================
+2025-11-26 07:10:55,351 epoch=51	global_step=3	acc=0.1207	acc_avg=0.0970	acc5=0.3103	acc5_avg=0.2560	loss=4.3276	loss_avg=4.7904	time=2.26it/s
+2025-11-26 07:10:55,351 Eval Loss:4.7904	Eval acc: 9.70
+2025-11-26 07:10:55,352 
+2025-11-26 07:10:55,352 ====================Training Epoch 52====================
+2025-11-26 07:12:00,456 epoch=52	global_step=21100	acc=0.5312	acc_avg=0.4375	loss=1.7838	loss_avg=2.0075	lr=0.0047	|gn|=4.0342	time=1.66it/s
+2025-11-26 07:13:08,999 epoch=52	global_step=21200	acc=0.3906	acc_avg=0.4288	loss=2.0374	loss_avg=2.0367	lr=0.0047	|gn|=4.6580	time=1.67it/s
+2025-11-26 07:14:17,697 epoch=52	global_step=21300	acc=0.5000	acc_avg=0.4304	loss=1.8107	loss_avg=2.0337	lr=0.0047	|gn|=4.2114	time=1.66it/s
+2025-11-26 07:15:26,759 epoch=52	global_step=21400	acc=0.3594	acc_avg=0.4293	loss=2.1880	loss_avg=2.0326	lr=0.0047	|gn|=5.0586	time=1.66it/s
+2025-11-26 07:15:34,433 ====================Eval Epoch 52====================
+2025-11-26 07:15:38,427 epoch=52	global_step=3	acc=0.1034	acc_avg=0.0730	acc5=0.3362	acc5_avg=0.2340	loss=4.6741	loss_avg=5.2629	time=2.26it/s
+2025-11-26 07:15:38,427 Eval Loss:5.2629	Eval acc: 7.30
+2025-11-26 07:15:38,428 
+2025-11-26 07:15:38,428 ====================Training Epoch 53====================
+2025-11-26 07:16:40,684 epoch=53	global_step=21500	acc=0.3906	acc_avg=0.4270	loss=2.1121	loss_avg=2.0395	lr=0.0045	|gn|=4.7530	time=1.66it/s
+2025-11-26 07:17:49,534 epoch=53	global_step=21600	acc=0.4219	acc_avg=0.4231	loss=1.8566	loss_avg=2.0349	lr=0.0045	|gn|=4.0255	time=1.66it/s
+2025-11-26 07:18:58,408 epoch=53	global_step=21700	acc=0.4844	acc_avg=0.4259	loss=1.9956	loss_avg=2.0315	lr=0.0045	|gn|=4.5652	time=1.66it/s
+2025-11-26 07:20:06,983 epoch=53	global_step=21800	acc=0.5156	acc_avg=0.4285	loss=1.9495	loss_avg=2.0242	lr=0.0045	|gn|=4.6230	time=1.66it/s
+2025-11-26 07:20:17,338 ====================Eval Epoch 53====================
+2025-11-26 07:20:21,287 epoch=53	global_step=3	acc=0.1422	acc_avg=0.0990	acc5=0.3362	acc5_avg=0.2590	loss=4.2782	loss_avg=5.0449	time=2.26it/s
+2025-11-26 07:20:21,287 Eval Loss:5.0449	Eval acc: 9.90
+2025-11-26 07:20:21,287 
+2025-11-26 07:20:21,288 ====================Training Epoch 54====================
+2025-11-26 07:21:20,874 epoch=54	global_step=21900	acc=0.3750	acc_avg=0.4395	loss=2.2418	loss_avg=1.9710	lr=0.0044	|gn|=5.3203	time=1.66it/s
+2025-11-26 07:22:29,457 epoch=54	global_step=22000	acc=0.3906	acc_avg=0.4340	loss=2.1646	loss_avg=1.9958	lr=0.0044	|gn|=4.8210	time=1.66it/s
+2025-11-26 07:23:38,090 epoch=54	global_step=22100	acc=0.5156	acc_avg=0.4339	loss=1.8630	loss_avg=1.9958	lr=0.0044	|gn|=4.6225	time=1.66it/s
+2025-11-26 07:24:46,735 epoch=54	global_step=22200	acc=0.4844	acc_avg=0.4354	loss=1.8268	loss_avg=1.9943	lr=0.0044	|gn|=4.9152	time=1.66it/s
+2025-11-26 07:24:59,820 ====================Eval Epoch 54====================
+2025-11-26 07:25:03,786 epoch=54	global_step=3	acc=0.1293	acc_avg=0.0840	acc5=0.3362	acc5_avg=0.2720	loss=4.4465	loss_avg=4.9895	time=2.26it/s
+2025-11-26 07:25:03,786 Eval Loss:4.9895	Eval acc: 8.40
+2025-11-26 07:25:03,787 
+2025-11-26 07:25:03,787 ====================Training Epoch 55====================
+2025-11-26 07:26:00,407 epoch=55	global_step=22300	acc=0.4375	acc_avg=0.4425	loss=2.0442	loss_avg=1.9640	lr=0.0042	|gn|=4.8306	time=1.67it/s
+2025-11-26 07:27:08,883 epoch=55	global_step=22400	acc=0.4531	acc_avg=0.4429	loss=1.9614	loss_avg=1.9745	lr=0.0042	|gn|=4.9129	time=1.67it/s
+2025-11-26 07:28:17,367 epoch=55	global_step=22500	acc=0.4844	acc_avg=0.4449	loss=1.9245	loss_avg=1.9758	lr=0.0042	|gn|=4.7659	time=1.67it/s
+2025-11-26 07:29:25,826 epoch=55	global_step=22600	acc=0.6562	acc_avg=0.4453	loss=1.4028	loss_avg=1.9610	lr=0.0042	|gn|=4.0265	time=1.67it/s
+2025-11-26 07:29:41,640 ====================Eval Epoch 55====================
+2025-11-26 07:29:45,591 epoch=55	global_step=3	acc=0.0905	acc_avg=0.0740	acc5=0.2672	acc5_avg=0.2100	loss=4.8644	loss_avg=5.5569	time=2.26it/s
+2025-11-26 07:29:45,592 Eval Loss:5.5569	Eval acc: 7.40
+2025-11-26 07:29:45,592 
+2025-11-26 07:29:45,592 ====================Training Epoch 56====================
+2025-11-26 07:30:39,587 epoch=56	global_step=22700	acc=0.5156	acc_avg=0.4432	loss=1.9909	loss_avg=1.9673	lr=0.0041	|gn|=4.2096	time=1.66it/s
+2025-11-26 07:31:48,167 epoch=56	global_step=22800	acc=0.2969	acc_avg=0.4342	loss=2.0925	loss_avg=1.9747	lr=0.0041	|gn|=4.8138	time=1.67it/s
+2025-11-26 07:32:56,761 epoch=56	global_step=22900	acc=0.4688	acc_avg=0.4395	loss=1.8489	loss_avg=1.9603	lr=0.0041	|gn|=4.7219	time=1.66it/s
+2025-11-26 07:34:05,451 epoch=56	global_step=23000	acc=0.4688	acc_avg=0.4442	loss=1.7730	loss_avg=1.9558	lr=0.0041	|gn|=4.7208	time=1.66it/s
+2025-11-26 07:34:24,063 ====================Eval Epoch 56====================
+2025-11-26 07:34:28,085 epoch=56	global_step=3	acc=0.1164	acc_avg=0.0900	acc5=0.3017	acc5_avg=0.2170	loss=5.2426	loss_avg=5.9803	time=2.26it/s
+2025-11-26 07:34:28,085 Eval Loss:5.9803	Eval acc: 9.00
+2025-11-26 07:34:28,086 
+2025-11-26 07:34:28,086 ====================Training Epoch 57====================
+2025-11-26 07:35:19,308 epoch=57	global_step=23100	acc=0.3438	acc_avg=0.4518	loss=2.0746	loss_avg=1.9462	lr=0.0039	|gn|=5.0241	time=1.66it/s
+2025-11-26 07:36:28,020 epoch=57	global_step=23200	acc=0.4062	acc_avg=0.4507	loss=2.0034	loss_avg=1.9416	lr=0.0039	|gn|=5.1671	time=1.66it/s
+2025-11-26 07:37:36,738 epoch=57	global_step=23300	acc=0.4531	acc_avg=0.4516	loss=1.9833	loss_avg=1.9380	lr=0.0039	|gn|=4.9646	time=1.66it/s
+2025-11-26 07:38:45,377 epoch=57	global_step=23400	acc=0.4844	acc_avg=0.4533	loss=1.9787	loss_avg=1.9406	lr=0.0039	|gn|=4.7090	time=1.67it/s
+2025-11-26 07:39:06,681 ====================Eval Epoch 57====================
+2025-11-26 07:39:10,646 epoch=57	global_step=3	acc=0.1207	acc_avg=0.0870	acc5=0.3621	acc5_avg=0.2660	loss=5.0806	loss_avg=5.5051	time=2.26it/s
+2025-11-26 07:39:10,646 Eval Loss:5.5051	Eval acc: 8.70
+2025-11-26 07:39:10,647 
+2025-11-26 07:39:10,647 ====================Training Epoch 58====================
+2025-11-26 07:39:59,344 epoch=58	global_step=23500	acc=0.5156	acc_avg=0.4644	loss=1.8778	loss_avg=1.9106	lr=0.0038	|gn|=4.6385	time=1.67it/s
+2025-11-26 07:41:07,838 epoch=58	global_step=23600	acc=0.4062	acc_avg=0.4603	loss=2.1985	loss_avg=1.9089	lr=0.0038	|gn|=5.7048	time=1.67it/s
+2025-11-26 07:42:16,327 epoch=58	global_step=23700	acc=0.4844	acc_avg=0.4557	loss=1.7571	loss_avg=1.9239	lr=0.0038	|gn|=4.9143	time=1.67it/s
+2025-11-26 07:43:24,799 epoch=58	global_step=23800	acc=0.3594	acc_avg=0.4568	loss=2.2962	loss_avg=1.9186	lr=0.0038	|gn|=5.2240	time=1.67it/s
+2025-11-26 07:43:48,812 ====================Eval Epoch 58====================
+2025-11-26 07:43:52,801 epoch=58	global_step=3	acc=0.0862	acc_avg=0.0860	acc5=0.3233	acc5_avg=0.2690	loss=4.7514	loss_avg=5.2040	time=2.26it/s
+2025-11-26 07:43:52,801 Eval Loss:5.2040	Eval acc: 8.60
+2025-11-26 07:43:52,802 
+2025-11-26 07:43:52,802 ====================Training Epoch 59====================
+2025-11-26 07:44:38,614 epoch=59	global_step=23900	acc=0.4375	acc_avg=0.4635	loss=1.8863	loss_avg=1.9133	lr=0.0036	|gn|=4.6667	time=1.66it/s
+2025-11-26 07:45:47,314 epoch=59	global_step=24000	acc=0.4531	acc_avg=0.4584	loss=1.9877	loss_avg=1.8990	lr=0.0036	|gn|=5.1568	time=1.66it/s
+2025-11-26 07:46:55,600 epoch=59	global_step=24100	acc=0.5312	acc_avg=0.4609	loss=1.7540	loss_avg=1.8905	lr=0.0036	|gn|=4.6279	time=1.66it/s
+2025-11-26 07:48:03,511 epoch=59	global_step=24200	acc=0.5000	acc_avg=0.4624	loss=1.6755	loss_avg=1.8896	lr=0.0036	|gn|=4.3322	time=1.66it/s
+2025-11-26 07:48:30,068 ====================Eval Epoch 59====================
+2025-11-26 07:48:34,036 epoch=59	global_step=3	acc=0.1207	acc_avg=0.0840	acc5=0.3060	acc5_avg=0.2360	loss=4.8172	loss_avg=5.7115	time=2.26it/s
+2025-11-26 07:48:34,037 Eval Loss:5.7115	Eval acc: 8.40
+2025-11-26 07:48:34,037 
+2025-11-26 07:48:34,037 ====================Training Epoch 60====================
+2025-11-26 07:49:16,583 epoch=60	global_step=24300	acc=0.4844	acc_avg=0.4603	loss=1.7910	loss_avg=1.8907	lr=0.0035	|gn|=4.4520	time=1.66it/s
+2025-11-26 07:50:24,526 epoch=60	global_step=24400	acc=0.4062	acc_avg=0.4683	loss=1.8306	loss_avg=1.8830	lr=0.0035	|gn|=4.8640	time=1.66it/s
+2025-11-26 07:51:32,412 epoch=60	global_step=24500	acc=0.4219	acc_avg=0.4662	loss=2.0162	loss_avg=1.8845	lr=0.0035	|gn|=5.3717	time=1.66it/s
+2025-11-26 07:52:40,347 epoch=60	global_step=24600	acc=0.4375	acc_avg=0.4628	loss=1.9283	loss_avg=1.8947	lr=0.0035	|gn|=4.9051	time=1.66it/s
+2025-11-26 07:53:09,610 ====================Eval Epoch 60====================
+2025-11-26 07:53:13,624 epoch=60	global_step=3	acc=0.0948	acc_avg=0.0890	acc5=0.2888	acc5_avg=0.2630	loss=5.2652	loss_avg=5.6733	time=2.26it/s
+2025-11-26 07:53:13,625 Eval Loss:5.6733	Eval acc: 8.90
+2025-11-26 07:53:13,625 
+2025-11-26 07:53:13,625 ====================Training Epoch 61====================
+2025-11-26 07:53:53,513 epoch=61	global_step=24700	acc=0.4844	acc_avg=0.4674	loss=1.8260	loss_avg=1.8573	lr=0.0033	|gn|=5.3711	time=1.66it/s
+2025-11-26 07:55:01,372 epoch=61	global_step=24800	acc=0.5156	acc_avg=0.4711	loss=1.8121	loss_avg=1.8696	lr=0.0033	|gn|=4.8591	time=1.66it/s
+2025-11-26 07:56:09,253 epoch=61	global_step=24900	acc=0.5312	acc_avg=0.4659	loss=1.5989	loss_avg=1.8822	lr=0.0033	|gn|=4.8410	time=1.66it/s
+2025-11-26 07:57:17,157 epoch=61	global_step=25000	acc=0.3906	acc_avg=0.4654	loss=1.9491	loss_avg=1.8808	lr=0.0033	|gn|=4.8658	time=1.66it/s
+2025-11-26 07:57:49,117 ====================Eval Epoch 61====================
+2025-11-26 07:57:53,104 epoch=61	global_step=3	acc=0.1164	acc_avg=0.0640	acc5=0.2931	acc5_avg=0.2220	loss=5.7808	loss_avg=6.6530	time=2.26it/s
+2025-11-26 07:57:53,104 Eval Loss:6.6530	Eval acc: 6.40
+2025-11-26 07:57:53,105 
+2025-11-26 07:57:53,105 ====================Training Epoch 62====================
+2025-11-26 07:58:30,277 epoch=62	global_step=25100	acc=0.5469	acc_avg=0.4631	loss=1.8578	loss_avg=1.8709	lr=0.0032	|gn|=5.3737	time=1.66it/s
+2025-11-26 07:59:38,196 epoch=62	global_step=25200	acc=0.4219	acc_avg=0.4624	loss=1.9813	loss_avg=1.8768	lr=0.0032	|gn|=5.1186	time=1.66it/s
+2025-11-26 08:00:46,057 epoch=62	global_step=25300	acc=0.4531	acc_avg=0.4607	loss=1.9700	loss_avg=1.8747	lr=0.0032	|gn|=5.4195	time=1.66it/s
+2025-11-26 08:01:53,965 epoch=62	global_step=25400	acc=0.3594	acc_avg=0.4672	loss=2.1922	loss_avg=1.8612	lr=0.0032	|gn|=5.5946	time=1.66it/s
+2025-11-26 08:02:28,647 ====================Eval Epoch 62====================
+2025-11-26 08:02:32,632 epoch=62	global_step=3	acc=0.1078	acc_avg=0.0980	acc5=0.2716	acc5_avg=0.2760	loss=4.9241	loss_avg=5.4316	time=2.26it/s
+2025-11-26 08:02:32,632 Eval Loss:5.4316	Eval acc: 9.80
+2025-11-26 08:02:32,633 
+2025-11-26 08:02:32,633 ====================Training Epoch 63====================
+2025-11-26 08:03:07,005 epoch=63	global_step=25500	acc=0.4688	acc_avg=0.4735	loss=1.7216	loss_avg=1.8116	lr=0.0030	|gn|=5.1964	time=1.66it/s
+2025-11-26 08:04:14,884 epoch=63	global_step=25600	acc=0.4688	acc_avg=0.4703	loss=1.8815	loss_avg=1.8466	lr=0.0030	|gn|=4.6337	time=1.66it/s
+2025-11-26 08:05:22,754 epoch=63	global_step=25700	acc=0.4688	acc_avg=0.4709	loss=2.0042	loss_avg=1.8491	lr=0.0030	|gn|=5.3162	time=1.66it/s
+2025-11-26 08:06:30,608 epoch=63	global_step=25800	acc=0.4688	acc_avg=0.4722	loss=1.7001	loss_avg=1.8420	lr=0.0030	|gn|=5.0450	time=1.66it/s
+2025-11-26 08:07:07,949 ====================Eval Epoch 63====================
+2025-11-26 08:07:11,957 epoch=63	global_step=3	acc=0.1164	acc_avg=0.0900	acc5=0.3276	acc5_avg=0.2600	loss=4.7535	loss_avg=5.4877	time=2.26it/s
+2025-11-26 08:07:11,957 Eval Loss:5.4877	Eval acc: 9.00
+2025-11-26 08:07:11,958 
+2025-11-26 08:07:11,958 ====================Training Epoch 64====================
+2025-11-26 08:07:43,640 epoch=64	global_step=25900	acc=0.4844	acc_avg=0.4865	loss=1.7155	loss_avg=1.8401	lr=0.0029	|gn|=4.6632	time=1.66it/s
+2025-11-26 08:08:51,564 epoch=64	global_step=26000	acc=0.4531	acc_avg=0.4793	loss=1.8358	loss_avg=1.8246	lr=0.0029	|gn|=4.9495	time=1.66it/s
+2025-11-26 08:09:59,437 epoch=64	global_step=26100	acc=0.4531	acc_avg=0.4795	loss=1.8083	loss_avg=1.8257	lr=0.0029	|gn|=5.2677	time=1.66it/s
+2025-11-26 08:11:07,347 epoch=64	global_step=26200	acc=0.4219	acc_avg=0.4799	loss=1.8159	loss_avg=1.8243	lr=0.0029	|gn|=4.6802	time=1.66it/s
+2025-11-26 08:11:47,432 ====================Eval Epoch 64====================
+2025-11-26 08:11:51,440 epoch=64	global_step=3	acc=0.1293	acc_avg=0.0900	acc5=0.3060	acc5_avg=0.2360	loss=5.3508	loss_avg=6.0642	time=2.26it/s
+2025-11-26 08:11:51,440 Eval Loss:6.0642	Eval acc: 9.00
+2025-11-26 08:11:51,441 
+2025-11-26 08:11:51,441 ====================Training Epoch 65====================
+2025-11-26 08:12:20,458 epoch=65	global_step=26300	acc=0.5781	acc_avg=0.4901	loss=1.4693	loss_avg=1.7723	lr=0.0027	|gn|=4.0770	time=1.66it/s
+2025-11-26 08:13:28,269 epoch=65	global_step=26400	acc=0.4219	acc_avg=0.4779	loss=1.9536	loss_avg=1.8062	lr=0.0027	|gn|=5.1441	time=1.66it/s
+2025-11-26 08:14:36,097 epoch=65	global_step=26500	acc=0.5781	acc_avg=0.4813	loss=1.3209	loss_avg=1.8030	lr=0.0027	|gn|=4.7953	time=1.66it/s
+2025-11-26 08:15:43,905 epoch=65	global_step=26600	acc=0.5312	acc_avg=0.4807	loss=1.6349	loss_avg=1.8046	lr=0.0027	|gn|=4.6914	time=1.66it/s
+2025-11-26 08:16:26,714 ====================Eval Epoch 65====================
+2025-11-26 08:16:30,718 epoch=65	global_step=3	acc=0.1509	acc_avg=0.1090	acc5=0.3836	acc5_avg=0.3030	loss=4.4985	loss_avg=5.0227	time=2.26it/s
+2025-11-26 08:16:30,719 Eval Loss:5.0227	Eval acc: 10.90
+2025-11-26 08:16:30,719 
+2025-11-26 08:16:30,719 ====================Training Epoch 66====================
+2025-11-26 08:16:57,040 epoch=66	global_step=26700	acc=0.4844	acc_avg=0.4865	loss=1.7959	loss_avg=1.7556	lr=0.0026	|gn|=5.1058	time=1.66it/s
+2025-11-26 08:18:04,950 epoch=66	global_step=26800	acc=0.5625	acc_avg=0.4883	loss=1.7653	loss_avg=1.7904	lr=0.0026	|gn|=4.9980	time=1.66it/s
+2025-11-26 08:19:12,847 epoch=66	global_step=26900	acc=0.3750	acc_avg=0.4898	loss=1.7564	loss_avg=1.7810	lr=0.0026	|gn|=5.2362	time=1.66it/s
+2025-11-26 08:20:20,750 epoch=66	global_step=27000	acc=0.6094	acc_avg=0.4917	loss=1.6717	loss_avg=1.7770	lr=0.0026	|gn|=7.8849	time=1.66it/s
+2025-11-26 08:21:06,318 ====================Eval Epoch 66====================
+2025-11-26 08:21:10,322 epoch=66	global_step=3	acc=0.0948	acc_avg=0.0670	acc5=0.2586	acc5_avg=0.2160	loss=14.6142	loss_avg=12.3489	time=2.26it/s
+2025-11-26 08:21:10,323 Eval Loss:12.3489	Eval acc: 6.70
+2025-11-26 08:21:10,323 
+2025-11-26 08:21:10,323 ====================Training Epoch 67====================
+2025-11-26 08:21:33,892 epoch=67	global_step=27100	acc=0.4062	acc_avg=0.4806	loss=1.9547	loss_avg=1.8095	lr=0.0025	|gn|=5.1148	time=1.66it/s
+2025-11-26 08:22:41,823 epoch=67	global_step=27200	acc=0.4844	acc_avg=0.4947	loss=1.6527	loss_avg=1.7728	lr=0.0025	|gn|=4.9781	time=1.66it/s
+2025-11-26 08:23:49,678 epoch=67	global_step=27300	acc=0.4844	acc_avg=0.4936	loss=1.6774	loss_avg=1.7645	lr=0.0025	|gn|=5.1221	time=1.66it/s
+2025-11-26 08:24:57,577 epoch=67	global_step=27400	acc=0.5469	acc_avg=0.4979	loss=1.5999	loss_avg=1.7543	lr=0.0025	|gn|=4.7800	time=1.66it/s
+2025-11-26 08:25:45,820 ====================Eval Epoch 67====================
+2025-11-26 08:25:49,833 epoch=67	global_step=3	acc=0.1250	acc_avg=0.1010	acc5=0.3621	acc5_avg=0.2800	loss=4.8213	loss_avg=5.3639	time=2.26it/s
+2025-11-26 08:25:49,833 Eval Loss:5.3639	Eval acc: 10.10
+2025-11-26 08:25:49,834 
+2025-11-26 08:25:49,834 ====================Training Epoch 68====================
+2025-11-26 08:26:10,649 epoch=68	global_step=27500	acc=0.5625	acc_avg=0.4919	loss=1.7083	loss_avg=1.7690	lr=0.0023	|gn|=4.8356	time=1.66it/s
+2025-11-26 08:27:18,712 epoch=68	global_step=27600	acc=0.5000	acc_avg=0.4959	loss=1.6428	loss_avg=1.7585	lr=0.0023	|gn|=5.2070	time=1.66it/s
+2025-11-26 08:28:26,639 epoch=68	global_step=27700	acc=0.4688	acc_avg=0.4984	loss=1.7589	loss_avg=1.7519	lr=0.0023	|gn|=5.1825	time=1.66it/s
+2025-11-26 08:29:34,562 epoch=68	global_step=27800	acc=0.5469	acc_avg=0.4987	loss=1.5216	loss_avg=1.7544	lr=0.0023	|gn|=4.6749	time=1.66it/s
+2025-11-26 08:30:25,579 ====================Eval Epoch 68====================
+2025-11-26 08:30:29,543 epoch=68	global_step=3	acc=0.1466	acc_avg=0.0990	acc5=0.4095	acc5_avg=0.2970	loss=4.4173	loss_avg=5.2699	time=2.25it/s
+2025-11-26 08:30:29,543 Eval Loss:5.2699	Eval acc: 9.90
+2025-11-26 08:30:29,544 
+2025-11-26 08:30:29,544 ====================Training Epoch 69====================
+2025-11-26 08:30:47,644 epoch=69	global_step=27900	acc=0.3750	acc_avg=0.4888	loss=1.9906	loss_avg=1.7566	lr=0.0022	|gn|=5.5461	time=1.66it/s
+2025-11-26 08:31:55,564 epoch=69	global_step=28000	acc=0.4844	acc_avg=0.4914	loss=1.8559	loss_avg=1.7674	lr=0.0022	|gn|=5.7579	time=1.66it/s
+2025-11-26 08:33:03,545 epoch=69	global_step=28100	acc=0.4844	acc_avg=0.4966	loss=1.7141	loss_avg=1.7483	lr=0.0022	|gn|=4.8901	time=1.66it/s
+2025-11-26 08:34:11,489 epoch=69	global_step=28200	acc=0.4375	acc_avg=0.4986	loss=1.8875	loss_avg=1.7439	lr=0.0022	|gn|=5.5685	time=1.66it/s
+2025-11-26 08:35:05,216 ====================Eval Epoch 69====================
+2025-11-26 08:35:09,240 epoch=69	global_step=3	acc=0.1767	acc_avg=0.1030	acc5=0.3534	acc5_avg=0.2760	loss=4.7226	loss_avg=5.3917	time=2.25it/s
+2025-11-26 08:35:09,241 Eval Loss:5.3917	Eval acc: 10.30
+2025-11-26 08:35:09,241 
+2025-11-26 08:35:09,241 ====================Training Epoch 70====================
+2025-11-26 08:35:24,630 epoch=70	global_step=28300	acc=0.5156	acc_avg=0.5179	loss=1.6259	loss_avg=1.6693	lr=0.0021	|gn|=5.6658	time=1.66it/s
+2025-11-26 08:36:32,567 epoch=70	global_step=28400	acc=0.5469	acc_avg=0.5127	loss=1.6268	loss_avg=1.7020	lr=0.0021	|gn|=4.8347	time=1.66it/s
+2025-11-26 08:37:40,539 epoch=70	global_step=28500	acc=0.5312	acc_avg=0.5061	loss=1.6595	loss_avg=1.7188	lr=0.0021	|gn|=5.6157	time=1.66it/s
+2025-11-26 08:38:48,407 epoch=70	global_step=28600	acc=0.5781	acc_avg=0.5058	loss=1.5353	loss_avg=1.7156	lr=0.0021	|gn|=4.7064	time=1.66it/s
+2025-11-26 08:39:44,825 ====================Eval Epoch 70====================
+2025-11-26 08:39:48,811 epoch=70	global_step=3	acc=0.1595	acc_avg=0.1040	acc5=0.4009	acc5_avg=0.2950	loss=5.1993	loss_avg=5.6827	time=2.26it/s
+2025-11-26 08:39:48,811 Eval Loss:5.6827	Eval acc: 10.40
+2025-11-26 08:39:48,812 
+2025-11-26 08:39:48,812 ====================Training Epoch 71====================
+2025-11-26 08:40:01,509 epoch=71	global_step=28700	acc=0.5625	acc_avg=0.5165	loss=1.4746	loss_avg=1.6872	lr=0.0019	|gn|=5.0223	time=1.66it/s
+2025-11-26 08:41:09,578 epoch=71	global_step=28800	acc=0.5469	acc_avg=0.5136	loss=1.6114	loss_avg=1.6979	lr=0.0019	|gn|=5.2984	time=1.66it/s
+2025-11-26 08:42:17,501 epoch=71	global_step=28900	acc=0.4844	acc_avg=0.5106	loss=1.8291	loss_avg=1.7029	lr=0.0019	|gn|=5.6336	time=1.66it/s
+2025-11-26 08:43:25,422 epoch=71	global_step=29000	acc=0.5938	acc_avg=0.5104	loss=1.4861	loss_avg=1.7000	lr=0.0019	|gn|=4.7497	time=1.66it/s
+2025-11-26 08:44:24,498 ====================Eval Epoch 71====================
+2025-11-26 08:44:28,484 epoch=71	global_step=3	acc=0.1595	acc_avg=0.1200	acc5=0.3621	acc5_avg=0.2980	loss=5.1812	loss_avg=5.4650	time=2.26it/s
+2025-11-26 08:44:28,484 Eval Loss:5.4650	Eval acc: 12.00
+2025-11-26 08:44:28,484 
+2025-11-26 08:44:28,484 ====================Training Epoch 72====================
+2025-11-26 08:44:38,458 epoch=72	global_step=29100	acc=0.5000	acc_avg=0.5120	loss=1.7417	loss_avg=1.7571	lr=0.0018	|gn|=5.9229	time=1.66it/s
+2025-11-26 08:45:46,859 epoch=72	global_step=29200	acc=0.5312	acc_avg=0.5163	loss=1.8493	loss_avg=1.6886	lr=0.0018	|gn|=6.3974	time=1.66it/s
+2025-11-26 08:46:55,560 epoch=72	global_step=29300	acc=0.5156	acc_avg=0.5172	loss=1.6355	loss_avg=1.6928	lr=0.0018	|gn|=5.2052	time=1.66it/s
+2025-11-26 08:48:03,666 epoch=72	global_step=29400	acc=0.5000	acc_avg=0.5166	loss=1.9275	loss_avg=1.6922	lr=0.0018	|gn|=5.9592	time=1.66it/s
+2025-11-26 08:49:05,480 ====================Eval Epoch 72====================
+2025-11-26 08:49:09,461 epoch=72	global_step=3	acc=0.1422	acc_avg=0.1000	acc5=0.3836	acc5_avg=0.2820	loss=5.8566	loss_avg=6.4809	time=2.25it/s
+2025-11-26 08:49:09,462 Eval Loss:6.4809	Eval acc: 10.00
+2025-11-26 08:49:09,462 
+2025-11-26 08:49:09,462 ====================Training Epoch 73====================
+2025-11-26 08:49:16,774 epoch=73	global_step=29500	acc=0.5625	acc_avg=0.5122	loss=1.7455	loss_avg=1.7054	lr=0.0017	|gn|=5.2067	time=1.66it/s
+2025-11-26 08:50:24,731 epoch=73	global_step=29600	acc=0.5312	acc_avg=0.5128	loss=1.8046	loss_avg=1.6978	lr=0.0017	|gn|=5.6677	time=1.66it/s
+2025-11-26 08:51:32,584 epoch=73	global_step=29700	acc=0.5156	acc_avg=0.5173	loss=1.7477	loss_avg=1.6851	lr=0.0017	|gn|=5.5879	time=1.66it/s
+2025-11-26 08:52:40,504 epoch=73	global_step=29800	acc=0.5000	acc_avg=0.5172	loss=1.8014	loss_avg=1.6823	lr=0.0017	|gn|=5.8760	time=1.66it/s
+2025-11-26 08:53:45,133 ====================Eval Epoch 73====================
+2025-11-26 08:53:49,090 epoch=73	global_step=3	acc=0.1422	acc_avg=0.1160	acc5=0.4267	acc5_avg=0.3090	loss=5.1425	loss_avg=5.6659	time=2.25it/s
+2025-11-26 08:53:49,091 Eval Loss:5.6659	Eval acc: 11.60
+2025-11-26 08:53:49,091 
+2025-11-26 08:53:49,091 ====================Training Epoch 74====================
+2025-11-26 08:53:53,617 epoch=74	global_step=29900	acc=0.4688	acc_avg=0.5219	loss=1.7089	loss_avg=1.6534	lr=0.0016	|gn|=5.4511	time=1.66it/s
+2025-11-26 08:55:01,938 epoch=74	global_step=30000	acc=0.4375	acc_avg=0.5165	loss=1.6326	loss_avg=1.6782	lr=0.0016	|gn|=5.2101	time=1.66it/s
+2025-11-26 08:56:10,083 epoch=74	global_step=30100	acc=0.4531	acc_avg=0.5191	loss=1.4994	loss_avg=1.6679	lr=0.0016	|gn|=5.9056	time=1.66it/s
+2025-11-26 08:57:18,511 epoch=74	global_step=30200	acc=0.5312	acc_avg=0.5152	loss=1.5694	loss_avg=1.6762	lr=0.0016	|gn|=5.5346	time=1.66it/s
+2025-11-26 08:58:26,166 ====================Eval Epoch 74====================
+2025-11-26 08:58:30,175 epoch=74	global_step=3	acc=0.1250	acc_avg=0.1000	acc5=0.3190	acc5_avg=0.2650	loss=5.7751	loss_avg=6.2711	time=2.26it/s
+2025-11-26 08:58:30,176 Eval Loss:6.2711	Eval acc: 10.00
+2025-11-26 08:58:30,176 
+2025-11-26 08:58:30,176 ====================Training Epoch 75====================
+2025-11-26 08:58:31,988 epoch=75	global_step=30300	acc=0.5000	acc_avg=0.5000	loss=1.6684	loss_avg=1.6684	lr=0.0015	|gn|=5.3129	time=1.66it/s
+2025-11-26 08:59:40,264 epoch=75	global_step=30400	acc=0.6406	acc_avg=0.5192	loss=1.2959	loss_avg=1.6430	lr=0.0015	|gn|=4.7207	time=1.66it/s
+2025-11-26 09:00:48,347 epoch=75	global_step=30500	acc=0.5312	acc_avg=0.5215	loss=1.7065	loss_avg=1.6463	lr=0.0015	|gn|=6.0003	time=1.66it/s
+2025-11-26 09:01:56,577 epoch=75	global_step=30600	acc=0.3906	acc_avg=0.5218	loss=2.0049	loss_avg=1.6492	lr=0.0015	|gn|=6.2389	time=1.66it/s
+2025-11-26 09:03:04,691 epoch=75	global_step=30700	acc=0.6719	acc_avg=0.5239	loss=1.3233	loss_avg=1.6459	lr=0.0015	|gn|=5.5330	time=1.66it/s
+2025-11-26 09:03:06,795 ====================Eval Epoch 75====================
+2025-11-26 09:03:10,778 epoch=75	global_step=3	acc=0.1509	acc_avg=0.0990	acc5=0.3922	acc5_avg=0.3110	loss=4.8873	loss_avg=5.5767	time=2.26it/s
+2025-11-26 09:03:10,779 Eval Loss:5.5767	Eval acc: 9.90
+2025-11-26 09:03:10,779 
+2025-11-26 09:03:10,779 ====================Training Epoch 76====================
+2025-11-26 09:04:17,932 epoch=76	global_step=30800	acc=0.6562	acc_avg=0.5190	loss=1.2747	loss_avg=1.6581	lr=0.0014	|gn|=4.8026	time=1.66it/s
+2025-11-26 09:05:25,850 epoch=76	global_step=30900	acc=0.4844	acc_avg=0.5229	loss=1.6749	loss_avg=1.6386	lr=0.0014	|gn|=5.6788	time=1.66it/s
+2025-11-26 09:06:33,774 epoch=76	global_step=31000	acc=0.5312	acc_avg=0.5219	loss=1.6376	loss_avg=1.6507	lr=0.0014	|gn|=5.7529	time=1.66it/s
+2025-11-26 09:07:41,749 epoch=76	global_step=31100	acc=0.5625	acc_avg=0.5233	loss=1.4686	loss_avg=1.6440	lr=0.0014	|gn|=5.3459	time=1.66it/s
+2025-11-26 09:07:46,568 ====================Eval Epoch 76====================
+2025-11-26 09:07:50,542 epoch=76	global_step=3	acc=0.1379	acc_avg=0.1040	acc5=0.4009	acc5_avg=0.2970	loss=5.2439	loss_avg=5.9134	time=2.25it/s
+2025-11-26 09:07:50,542 Eval Loss:5.9134	Eval acc: 10.40
+2025-11-26 09:07:50,542 
+2025-11-26 09:07:50,543 ====================Training Epoch 77====================
+2025-11-26 09:08:54,889 epoch=77	global_step=31200	acc=0.5938	acc_avg=0.5254	loss=1.5051	loss_avg=1.6232	lr=0.0012	|gn|=5.8460	time=1.66it/s
+2025-11-26 09:10:02,754 epoch=77	global_step=31300	acc=0.5000	acc_avg=0.5241	loss=1.6972	loss_avg=1.6377	lr=0.0012	|gn|=6.3793	time=1.66it/s
+2025-11-26 09:11:10,619 epoch=77	global_step=31400	acc=0.5469	acc_avg=0.5246	loss=1.5262	loss_avg=1.6297	lr=0.0012	|gn|=5.8784	time=1.66it/s
+2025-11-26 09:12:19,062 epoch=77	global_step=31500	acc=0.4844	acc_avg=0.5248	loss=1.6828	loss_avg=1.6347	lr=0.0012	|gn|=6.0026	time=1.67it/s
+2025-11-26 09:12:26,635 ====================Eval Epoch 77====================
+2025-11-26 09:12:30,630 epoch=77	global_step=3	acc=0.1250	acc_avg=0.0900	acc5=0.3362	acc5_avg=0.2780	loss=6.2542	loss_avg=6.9581	time=2.27it/s
+2025-11-26 09:12:30,631 Eval Loss:6.9581	Eval acc: 9.00
+2025-11-26 09:12:30,631 
+2025-11-26 09:12:30,631 ====================Training Epoch 78====================
+2025-11-26 09:13:32,718 epoch=78	global_step=31600	acc=0.5312	acc_avg=0.5453	loss=1.4667	loss_avg=1.5866	lr=0.0011	|gn|=5.7057	time=1.67it/s
+2025-11-26 09:14:41,145 epoch=78	global_step=31700	acc=0.5312	acc_avg=0.5378	loss=1.6238	loss_avg=1.6071	lr=0.0011	|gn|=6.1851	time=1.67it/s
+2025-11-26 09:15:49,592 epoch=78	global_step=31800	acc=0.6250	acc_avg=0.5354	loss=1.3745	loss_avg=1.6101	lr=0.0011	|gn|=4.8641	time=1.66it/s
+2025-11-26 09:16:58,282 epoch=78	global_step=31900	acc=0.5938	acc_avg=0.5360	loss=1.3471	loss_avg=1.6079	lr=0.0011	|gn|=5.4091	time=1.66it/s
+2025-11-26 09:17:08,643 ====================Eval Epoch 78====================
+2025-11-26 09:17:12,629 epoch=78	global_step=3	acc=0.1379	acc_avg=0.1050	acc5=0.3190	acc5_avg=0.2580	loss=8.9833	loss_avg=8.3092	time=2.26it/s
+2025-11-26 09:17:12,630 Eval Loss:8.3092	Eval acc: 10.50
+2025-11-26 09:17:12,630 
+2025-11-26 09:17:12,630 ====================Training Epoch 79====================
+2025-11-26 09:18:12,065 epoch=79	global_step=32000	acc=0.6250	acc_avg=0.5452	loss=1.3700	loss_avg=1.5716	lr=0.0010	|gn|=5.3486	time=1.66it/s
+2025-11-26 09:19:20,057 epoch=79	global_step=32100	acc=0.6094	acc_avg=0.5432	loss=1.4138	loss_avg=1.5897	lr=0.0010	|gn|=5.3672	time=1.66it/s
+2025-11-26 09:20:27,963 epoch=79	global_step=32200	acc=0.6250	acc_avg=0.5399	loss=1.3333	loss_avg=1.6030	lr=0.0010	|gn|=5.3761	time=1.66it/s
+2025-11-26 09:21:35,898 epoch=79	global_step=32300	acc=0.5469	acc_avg=0.5379	loss=1.7118	loss_avg=1.6008	lr=0.0010	|gn|=6.2988	time=1.66it/s
+2025-11-26 09:21:48,878 ====================Eval Epoch 79====================
+2025-11-26 09:21:52,903 epoch=79	global_step=3	acc=0.1509	acc_avg=0.1050	acc5=0.3448	acc5_avg=0.2900	loss=5.8000	loss_avg=6.3757	time=2.25it/s
+2025-11-26 09:21:52,903 Eval Loss:6.3757	Eval acc: 10.50
+2025-11-26 09:21:52,904 
+2025-11-26 09:21:52,904 ====================Training Epoch 80====================
+2025-11-26 09:22:49,091 epoch=80	global_step=32400	acc=0.5938	acc_avg=0.5422	loss=1.5994	loss_avg=1.5846	lr=0.0010	|gn|=6.2469	time=1.66it/s
+2025-11-26 09:23:57,002 epoch=80	global_step=32500	acc=0.5469	acc_avg=0.5399	loss=1.6775	loss_avg=1.5996	lr=0.0010	|gn|=5.9782	time=1.66it/s
+2025-11-26 09:25:04,946 epoch=80	global_step=32600	acc=0.5312	acc_avg=0.5393	loss=1.5329	loss_avg=1.6027	lr=0.0010	|gn|=6.1609	time=1.66it/s
+2025-11-26 09:26:12,935 epoch=80	global_step=32700	acc=0.5625	acc_avg=0.5399	loss=1.7672	loss_avg=1.5951	lr=0.0010	|gn|=6.4817	time=1.66it/s
+2025-11-26 09:26:28,705 ====================Eval Epoch 80====================
+2025-11-26 09:26:32,699 epoch=80	global_step=3	acc=0.1293	acc_avg=0.1000	acc5=0.3190	acc5_avg=0.2720	loss=5.6831	loss_avg=6.0502	time=2.26it/s
+2025-11-26 09:26:32,700 Eval Loss:6.0502	Eval acc: 10.00
+2025-11-26 09:26:32,700 
+2025-11-26 09:26:32,700 ====================Training Epoch 81====================
+2025-11-26 09:27:26,160 epoch=81	global_step=32800	acc=0.5625	acc_avg=0.5394	loss=1.8120	loss_avg=1.6079	lr=0.0009	|gn|=7.0029	time=1.66it/s
+2025-11-26 09:28:34,205 epoch=81	global_step=32900	acc=0.6250	acc_avg=0.5402	loss=1.4234	loss_avg=1.5919	lr=0.0009	|gn|=5.4936	time=1.66it/s
+2025-11-26 09:29:42,608 epoch=81	global_step=33000	acc=0.6562	acc_avg=0.5402	loss=1.2879	loss_avg=1.5892	lr=0.0009	|gn|=5.1928	time=1.66it/s
+2025-11-26 09:30:51,325 epoch=81	global_step=33100	acc=0.5625	acc_avg=0.5404	loss=1.4420	loss_avg=1.5848	lr=0.0009	|gn|=5.7975	time=1.66it/s
+2025-11-26 09:31:09,939 ====================Eval Epoch 81====================
+2025-11-26 09:31:13,953 epoch=81	global_step=3	acc=0.1121	acc_avg=0.1080	acc5=0.3319	acc5_avg=0.2920	loss=6.1527	loss_avg=6.3032	time=2.26it/s
+2025-11-26 09:31:13,953 Eval Loss:6.3032	Eval acc: 10.80
+2025-11-26 09:31:13,953 
+2025-11-26 09:31:13,953 ====================Training Epoch 82====================
+2025-11-26 09:32:05,189 epoch=82	global_step=33200	acc=0.3594	acc_avg=0.5338	loss=2.0357	loss_avg=1.5879	lr=0.0008	|gn|=6.4661	time=1.66it/s
+2025-11-26 09:33:13,061 epoch=82	global_step=33300	acc=0.6250	acc_avg=0.5402	loss=1.3312	loss_avg=1.5710	lr=0.0008	|gn|=4.9980	time=1.66it/s
+2025-11-26 09:34:20,967 epoch=82	global_step=33400	acc=0.6250	acc_avg=0.5433	loss=1.3599	loss_avg=1.5687	lr=0.0008	|gn|=5.8253	time=1.66it/s
+2025-11-26 09:35:28,909 epoch=82	global_step=33500	acc=0.6094	acc_avg=0.5447	loss=1.4193	loss_avg=1.5690	lr=0.0008	|gn|=5.7641	time=1.66it/s
+2025-11-26 09:35:50,227 ====================Eval Epoch 82====================
+2025-11-26 09:35:54,236 epoch=82	global_step=3	acc=0.1681	acc_avg=0.1120	acc5=0.3966	acc5_avg=0.3270	loss=4.6548	loss_avg=5.2693	time=2.26it/s
+2025-11-26 09:35:54,237 Eval Loss:5.2693	Eval acc: 11.20
+2025-11-26 09:35:54,237 
+2025-11-26 09:35:54,237 ====================Training Epoch 83====================
+2025-11-26 09:36:42,712 epoch=83	global_step=33600	acc=0.5469	acc_avg=0.5571	loss=1.5070	loss_avg=1.5483	lr=0.0007	|gn|=6.5639	time=1.67it/s
+2025-11-26 09:37:51,288 epoch=83	global_step=33700	acc=0.5000	acc_avg=0.5468	loss=1.5661	loss_avg=1.5686	lr=0.0007	|gn|=6.1936	time=1.67it/s
+2025-11-26 09:38:59,599 epoch=83	global_step=33800	acc=0.5469	acc_avg=0.5417	loss=1.5256	loss_avg=1.5790	lr=0.0007	|gn|=5.9267	time=1.66it/s
+2025-11-26 09:40:08,049 epoch=83	global_step=33900	acc=0.5156	acc_avg=0.5428	loss=1.6425	loss_avg=1.5729	lr=0.0007	|gn|=6.2258	time=1.67it/s
+2025-11-26 09:40:32,111 ====================Eval Epoch 83====================
+2025-11-26 09:40:36,099 epoch=83	global_step=3	acc=0.1336	acc_avg=0.1090	acc5=0.4138	acc5_avg=0.3340	loss=5.0979	loss_avg=5.5433	time=2.26it/s
+2025-11-26 09:40:36,099 Eval Loss:5.5433	Eval acc: 10.90
+2025-11-26 09:40:36,100 
+2025-11-26 09:40:36,100 ====================Training Epoch 84====================
+2025-11-26 09:41:21,893 epoch=84	global_step=34000	acc=0.4844	acc_avg=0.5433	loss=1.5011	loss_avg=1.5755	lr=0.0006	|gn|=5.6876	time=1.66it/s
+2025-11-26 09:42:30,648 epoch=84	global_step=34100	acc=0.5625	acc_avg=0.5465	loss=1.5098	loss_avg=1.5564	lr=0.0006	|gn|=6.8624	time=1.66it/s
+2025-11-26 09:43:39,365 epoch=84	global_step=34200	acc=0.5781	acc_avg=0.5496	loss=1.3614	loss_avg=1.5478	lr=0.0006	|gn|=5.5242	time=1.66it/s
+2025-11-26 09:44:48,112 epoch=84	global_step=34300	acc=0.5781	acc_avg=0.5490	loss=1.5509	loss_avg=1.5467	lr=0.0006	|gn|=5.9153	time=1.66it/s
+2025-11-26 09:45:14,986 ====================Eval Epoch 84====================
+2025-11-26 09:45:18,995 epoch=84	global_step=3	acc=0.1207	acc_avg=0.1040	acc5=0.3491	acc5_avg=0.3010	loss=6.6261	loss_avg=6.4208	time=2.26it/s
+2025-11-26 09:45:18,996 Eval Loss:6.4208	Eval acc: 10.40
+2025-11-26 09:45:18,996 
+2025-11-26 09:45:18,996 ====================Training Epoch 85====================
+2025-11-26 09:46:02,040 epoch=85	global_step=34400	acc=0.5469	acc_avg=0.5617	loss=1.5971	loss_avg=1.5582	lr=0.0005	|gn|=6.1304	time=1.67it/s
+2025-11-26 09:47:10,637 epoch=85	global_step=34500	acc=0.4375	acc_avg=0.5524	loss=1.8131	loss_avg=1.5658	lr=0.0005	|gn|=6.1172	time=1.66it/s
+2025-11-26 09:48:19,220 epoch=85	global_step=34600	acc=0.4844	acc_avg=0.5505	loss=1.7062	loss_avg=1.5513	lr=0.0005	|gn|=6.1481	time=1.67it/s
+2025-11-26 09:49:27,789 epoch=85	global_step=34700	acc=0.5000	acc_avg=0.5503	loss=1.8508	loss_avg=1.5570	lr=0.0005	|gn|=7.7085	time=1.67it/s
+2025-11-26 09:49:57,366 ====================Eval Epoch 85====================
+2025-11-26 09:50:01,361 epoch=85	global_step=3	acc=0.1293	acc_avg=0.1010	acc5=0.3707	acc5_avg=0.2940	loss=6.5297	loss_avg=6.5255	time=2.26it/s
+2025-11-26 09:50:01,362 Eval Loss:6.5255	Eval acc: 10.10
+2025-11-26 09:50:01,362 
+2025-11-26 09:50:01,362 ====================Training Epoch 86====================
+2025-11-26 09:50:41,669 epoch=86	global_step=34800	acc=0.5469	acc_avg=0.5584	loss=1.4216	loss_avg=1.5244	lr=0.0005	|gn|=5.3997	time=1.66it/s
+2025-11-26 09:51:49,737 epoch=86	global_step=34900	acc=0.4688	acc_avg=0.5573	loss=1.6531	loss_avg=1.5379	lr=0.0005	|gn|=6.1776	time=1.67it/s
+2025-11-26 09:52:57,599 epoch=86	global_step=35000	acc=0.5000	acc_avg=0.5519	loss=1.7725	loss_avg=1.5472	lr=0.0005	|gn|=6.5802	time=1.66it/s
+2025-11-26 09:54:05,517 epoch=86	global_step=35100	acc=0.6406	acc_avg=0.5548	loss=1.3882	loss_avg=1.5385	lr=0.0005	|gn|=5.7886	time=1.66it/s
+2025-11-26 09:54:37,456 ====================Eval Epoch 86====================
+2025-11-26 09:54:41,411 epoch=86	global_step=3	acc=0.0905	acc_avg=0.0870	acc5=0.2931	acc5_avg=0.2560	loss=13.3610	loss_avg=10.9777	time=2.26it/s
+2025-11-26 09:54:41,412 Eval Loss:10.9777	Eval acc: 8.70
+2025-11-26 09:54:41,412 
+2025-11-26 09:54:41,412 ====================Training Epoch 87====================
+2025-11-26 09:55:18,502 epoch=87	global_step=35200	acc=0.4844	acc_avg=0.5433	loss=1.7864	loss_avg=1.5552	lr=0.0004	|gn|=6.2621	time=1.66it/s
+2025-11-26 09:56:26,322 epoch=87	global_step=35300	acc=0.6094	acc_avg=0.5534	loss=1.2411	loss_avg=1.5400	lr=0.0004	|gn|=6.0172	time=1.66it/s
+2025-11-26 09:57:34,132 epoch=87	global_step=35400	acc=0.5156	acc_avg=0.5512	loss=1.6820	loss_avg=1.5418	lr=0.0004	|gn|=6.2073	time=1.66it/s
+2025-11-26 09:58:41,989 epoch=87	global_step=35500	acc=0.4844	acc_avg=0.5542	loss=1.5224	loss_avg=1.5348	lr=0.0004	|gn|=6.1406	time=1.66it/s
+2025-11-26 09:59:16,642 ====================Eval Epoch 87====================
+2025-11-26 09:59:20,618 epoch=87	global_step=3	acc=0.1422	acc_avg=0.1070	acc5=0.2931	acc5_avg=0.2420	loss=9.6208	loss_avg=8.6306	time=2.26it/s
+2025-11-26 09:59:20,618 Eval Loss:8.6306	Eval acc: 10.70
+2025-11-26 09:59:20,619 
+2025-11-26 09:59:20,619 ====================Training Epoch 88====================
+2025-11-26 09:59:54,980 epoch=88	global_step=35600	acc=0.5312	acc_avg=0.5558	loss=1.7904	loss_avg=1.5416	lr=0.0004	|gn|=7.0663	time=1.66it/s
+2025-11-26 10:01:02,860 epoch=88	global_step=35700	acc=0.6406	acc_avg=0.5562	loss=1.3845	loss_avg=1.5469	lr=0.0004	|gn|=6.0038	time=1.66it/s
+2025-11-26 10:02:10,706 epoch=88	global_step=35800	acc=0.5312	acc_avg=0.5569	loss=1.5770	loss_avg=1.5383	lr=0.0004	|gn|=6.4231	time=1.66it/s
+2025-11-26 10:03:18,524 epoch=88	global_step=35900	acc=0.5000	acc_avg=0.5573	loss=1.4216	loss_avg=1.5334	lr=0.0004	|gn|=6.8250	time=1.66it/s
+2025-11-26 10:03:55,891 ====================Eval Epoch 88====================
+2025-11-26 10:03:59,925 epoch=88	global_step=3	acc=0.1509	acc_avg=0.1030	acc5=0.3922	acc5_avg=0.2830	loss=8.6109	loss_avg=8.0204	time=2.26it/s
+2025-11-26 10:03:59,926 Eval Loss:8.0204	Eval acc: 10.30
+2025-11-26 10:03:59,926 
+2025-11-26 10:03:59,926 ====================Training Epoch 89====================
+2025-11-26 10:04:31,607 epoch=89	global_step=36000	acc=0.5000	acc_avg=0.5524	loss=1.5993	loss_avg=1.5301	lr=0.0003	|gn|=6.2203	time=1.66it/s
+2025-11-26 10:05:39,475 epoch=89	global_step=36100	acc=0.5781	acc_avg=0.5474	loss=1.4579	loss_avg=1.5470	lr=0.0003	|gn|=6.0360	time=1.67it/s
+2025-11-26 10:06:47,226 epoch=89	global_step=36200	acc=0.5312	acc_avg=0.5501	loss=1.6378	loss_avg=1.5451	lr=0.0003	|gn|=6.4422	time=1.67it/s
+2025-11-26 10:07:54,949 epoch=89	global_step=36300	acc=0.5781	acc_avg=0.5503	loss=1.3485	loss_avg=1.5418	lr=0.0003	|gn|=6.0211	time=1.67it/s
+2025-11-26 10:08:34,976 ====================Eval Epoch 89====================
+2025-11-26 10:08:38,994 epoch=89	global_step=3	acc=0.1466	acc_avg=0.1060	acc5=0.3621	acc5_avg=0.2870	loss=6.3568	loss_avg=6.5076	time=2.26it/s
+2025-11-26 10:08:38,995 Eval Loss:6.5076	Eval acc: 10.60
+2025-11-26 10:08:38,995 
+2025-11-26 10:08:38,995 ====================Training Epoch 90====================
+2025-11-26 10:09:07,971 epoch=90	global_step=36400	acc=0.4844	acc_avg=0.5560	loss=1.7283	loss_avg=1.5382	lr=0.0002	|gn|=6.0494	time=1.66it/s
+2025-11-26 10:10:15,821 epoch=90	global_step=36500	acc=0.5938	acc_avg=0.5604	loss=1.3930	loss_avg=1.5197	lr=0.0002	|gn|=5.2381	time=1.66it/s
+2025-11-26 10:11:23,523 epoch=90	global_step=36600	acc=0.4844	acc_avg=0.5547	loss=1.6114	loss_avg=1.5243	lr=0.0002	|gn|=6.0303	time=1.66it/s
+2025-11-26 10:12:31,231 epoch=90	global_step=36700	acc=0.5156	acc_avg=0.5543	loss=1.5132	loss_avg=1.5322	lr=0.0002	|gn|=6.5243	time=1.66it/s
+2025-11-26 10:13:13,863 ====================Eval Epoch 90====================
+2025-11-26 10:13:17,888 epoch=90	global_step=3	acc=0.1336	acc_avg=0.0980	acc5=0.3060	acc5_avg=0.2470	loss=15.2222	loss_avg=12.6462	time=2.26it/s
+2025-11-26 10:13:17,889 Eval Loss:12.6462	Eval acc: 9.80
+2025-11-26 10:13:17,889 
+2025-11-26 10:13:17,889 ====================Training Epoch 91====================
+2025-11-26 10:13:44,181 epoch=91	global_step=36800	acc=0.6250	acc_avg=0.5663	loss=1.3093	loss_avg=1.5031	lr=0.0002	|gn|=6.5407	time=1.66it/s
+2025-11-26 10:14:51,673 epoch=91	global_step=36900	acc=0.5781	acc_avg=0.5687	loss=1.3378	loss_avg=1.5092	lr=0.0002	|gn|=5.6703	time=1.66it/s
+2025-11-26 10:15:59,209 epoch=91	global_step=37000	acc=0.5000	acc_avg=0.5674	loss=1.7024	loss_avg=1.5081	lr=0.0002	|gn|=7.3944	time=1.66it/s
+2025-11-26 10:17:06,737 epoch=91	global_step=37100	acc=0.5938	acc_avg=0.5651	loss=1.3646	loss_avg=1.5075	lr=0.0002	|gn|=6.1189	time=1.66it/s
+2025-11-26 10:17:52,053 ====================Eval Epoch 91====================
+2025-11-26 10:17:56,020 epoch=91	global_step=3	acc=0.1552	acc_avg=0.1100	acc5=0.3448	acc5_avg=0.2830	loss=6.7714	loss_avg=6.6974	time=2.26it/s
+2025-11-26 10:17:56,021 Eval Loss:6.6974	Eval acc: 11.00
+2025-11-26 10:17:56,021 
+2025-11-26 10:17:56,021 ====================Training Epoch 92====================
+2025-11-26 10:18:19,580 epoch=92	global_step=37200	acc=0.4844	acc_avg=0.5582	loss=1.4589	loss_avg=1.4712	lr=0.0002	|gn|=5.9695	time=1.66it/s
+2025-11-26 10:19:27,158 epoch=92	global_step=37300	acc=0.4062	acc_avg=0.5497	loss=1.8554	loss_avg=1.5176	lr=0.0002	|gn|=7.1756	time=1.66it/s
+2025-11-26 10:20:34,665 epoch=92	global_step=37400	acc=0.5781	acc_avg=0.5569	loss=1.3157	loss_avg=1.5158	lr=0.0002	|gn|=5.8044	time=1.67it/s
+2025-11-26 10:21:42,074 epoch=92	global_step=37500	acc=0.6250	acc_avg=0.5592	loss=1.4837	loss_avg=1.5151	lr=0.0002	|gn|=7.4386	time=1.67it/s
+2025-11-26 10:22:30,043 ====================Eval Epoch 92====================
+2025-11-26 10:22:34,075 epoch=92	global_step=3	acc=0.1509	acc_avg=0.1020	acc5=0.3017	acc5_avg=0.2450	loss=7.7320	loss_avg=7.4548	time=2.26it/s
+2025-11-26 10:22:34,076 Eval Loss:7.4548	Eval acc: 10.20
+2025-11-26 10:22:34,076 
+2025-11-26 10:22:34,076 ====================Training Epoch 93====================
+2025-11-26 10:22:54,895 epoch=93	global_step=37600	acc=0.6875	acc_avg=0.5625	loss=1.0914	loss_avg=1.4855	lr=0.0001	|gn|=5.8131	time=1.66it/s
+2025-11-26 10:24:02,493 epoch=93	global_step=37700	acc=0.5156	acc_avg=0.5607	loss=1.5152	loss_avg=1.4947	lr=0.0001	|gn|=5.8428	time=1.66it/s
+2025-11-26 10:25:10,055 epoch=93	global_step=37800	acc=0.5469	acc_avg=0.5622	loss=1.5144	loss_avg=1.4941	lr=0.0001	|gn|=6.3949	time=1.66it/s
+2025-11-26 10:26:17,619 epoch=93	global_step=37900	acc=0.6250	acc_avg=0.5619	loss=1.3199	loss_avg=1.5037	lr=0.0001	|gn|=6.0109	time=1.66it/s
+2025-11-26 10:27:08,557 ====================Eval Epoch 93====================
+2025-11-26 10:27:12,552 epoch=93	global_step=3	acc=0.1164	acc_avg=0.1070	acc5=0.3405	acc5_avg=0.2860	loss=11.2422	loss_avg=9.5099	time=2.26it/s
+2025-11-26 10:27:12,553 Eval Loss:9.5099	Eval acc: 10.70
+2025-11-26 10:27:12,553 
+2025-11-26 10:27:12,553 ====================Training Epoch 94====================
+2025-11-26 10:27:30,786 epoch=94	global_step=38000	acc=0.5781	acc_avg=0.5406	loss=1.5448	loss_avg=1.5043	lr=0.0001	|gn|=6.7156	time=1.66it/s
+2025-11-26 10:28:38,410 epoch=94	global_step=38100	acc=0.6406	acc_avg=0.5619	loss=1.3838	loss_avg=1.4858	lr=0.0001	|gn|=6.7966	time=1.66it/s
+2025-11-26 10:29:46,224 epoch=94	global_step=38200	acc=0.5000	acc_avg=0.5621	loss=1.9004	loss_avg=1.4939	lr=0.0001	|gn|=6.8382	time=1.66it/s
+2025-11-26 10:30:54,195 epoch=94	global_step=38300	acc=0.4375	acc_avg=0.5614	loss=1.8185	loss_avg=1.5007	lr=0.0001	|gn|=6.9800	time=1.66it/s
+2025-11-26 10:31:48,116 ====================Eval Epoch 94====================
+2025-11-26 10:31:52,190 epoch=94	global_step=3	acc=0.1379	acc_avg=0.1040	acc5=0.3750	acc5_avg=0.3000	loss=5.7816	loss_avg=5.9601	time=2.26it/s
+2025-11-26 10:31:52,190 Eval Loss:5.9601	Eval acc: 10.40
+2025-11-26 10:31:52,191 
+2025-11-26 10:31:52,191 ====================Training Epoch 95====================
+2025-11-26 10:32:07,699 epoch=95	global_step=38400	acc=0.5156	acc_avg=0.5699	loss=1.4449	loss_avg=1.4778	lr=0.0001	|gn|=6.6741	time=1.66it/s
+2025-11-26 10:33:15,617 epoch=95	global_step=38500	acc=0.6406	acc_avg=0.5752	loss=1.2446	loss_avg=1.4885	lr=0.0001	|gn|=5.7988	time=1.66it/s
+2025-11-26 10:34:23,538 epoch=95	global_step=38600	acc=0.6406	acc_avg=0.5709	loss=1.5305	loss_avg=1.5029	lr=0.0001	|gn|=6.5053	time=1.66it/s
+2025-11-26 10:35:31,447 epoch=95	global_step=38700	acc=0.5000	acc_avg=0.5685	loss=1.6494	loss_avg=1.4970	lr=0.0001	|gn|=7.0588	time=1.66it/s
+2025-11-26 10:36:27,876 ====================Eval Epoch 95====================
+2025-11-26 10:36:31,842 epoch=95	global_step=3	acc=0.1595	acc_avg=0.1050	acc5=0.3233	acc5_avg=0.2600	loss=6.0124	loss_avg=6.3965	time=2.26it/s
+2025-11-26 10:36:31,842 Eval Loss:6.3965	Eval acc: 10.50
+2025-11-26 10:36:31,843 
+2025-11-26 10:36:31,843 ====================Training Epoch 96====================
+2025-11-26 10:36:44,560 epoch=96	global_step=38800	acc=0.5781	acc_avg=0.5680	loss=1.3947	loss_avg=1.4208	lr=0.0000	|gn|=6.2743	time=1.66it/s
+2025-11-26 10:37:52,592 epoch=96	global_step=38900	acc=0.5312	acc_avg=0.5574	loss=1.3688	loss_avg=1.4885	lr=0.0000	|gn|=5.6323	time=1.66it/s
+2025-11-26 10:39:00,700 epoch=96	global_step=39000	acc=0.5938	acc_avg=0.5593	loss=1.5175	loss_avg=1.4998	lr=0.0000	|gn|=6.4728	time=1.66it/s
+2025-11-26 10:40:08,734 epoch=96	global_step=39100	acc=0.5781	acc_avg=0.5622	loss=1.4335	loss_avg=1.5046	lr=0.0000	|gn|=6.1085	time=1.66it/s
+2025-11-26 10:41:08,069 ====================Eval Epoch 96====================
+2025-11-26 10:41:12,048 epoch=96	global_step=3	acc=0.1509	acc_avg=0.1040	acc5=0.3103	acc5_avg=0.2450	loss=8.8950	loss_avg=8.2916	time=2.26it/s
+2025-11-26 10:41:12,049 Eval Loss:8.2916	Eval acc: 10.40
+2025-11-26 10:41:12,049 
+2025-11-26 10:41:12,049 ====================Training Epoch 97====================
+2025-11-26 10:41:22,026 epoch=97	global_step=39200	acc=0.5312	acc_avg=0.5457	loss=1.4852	loss_avg=1.5385	lr=0.0000	|gn|=5.7704	time=1.67it/s
+2025-11-26 10:42:30,025 epoch=97	global_step=39300	acc=0.6094	acc_avg=0.5639	loss=1.4146	loss_avg=1.4949	lr=0.0000	|gn|=5.8466	time=1.66it/s
+2025-11-26 10:43:37,853 epoch=97	global_step=39400	acc=0.4844	acc_avg=0.5625	loss=1.6728	loss_avg=1.5052	lr=0.0000	|gn|=7.0506	time=1.67it/s
+2025-11-26 10:44:45,675 epoch=97	global_step=39500	acc=0.6719	acc_avg=0.5641	loss=1.3799	loss_avg=1.4982	lr=0.0000	|gn|=5.9814	time=1.67it/s
+2025-11-26 10:45:47,373 ====================Eval Epoch 97====================
+2025-11-26 10:45:51,368 epoch=97	global_step=3	acc=0.1422	acc_avg=0.1100	acc5=0.3276	acc5_avg=0.2710	loss=8.9248	loss_avg=8.0987	time=2.26it/s
+2025-11-26 10:45:51,368 Eval Loss:8.0987	Eval acc: 11.00
+2025-11-26 10:45:51,369 
+2025-11-26 10:45:51,369 ====================Training Epoch 98====================
+2025-11-26 10:45:58,577 epoch=98	global_step=39600	acc=0.5625	acc_avg=0.5538	loss=1.3722	loss_avg=1.5483	lr=0.0000	|gn|=5.8738	time=1.66it/s
+2025-11-26 10:47:06,414 epoch=98	global_step=39700	acc=0.5469	acc_avg=0.5632	loss=1.5147	loss_avg=1.4983	lr=0.0000	|gn|=6.5608	time=1.66it/s
+2025-11-26 10:48:14,322 epoch=98	global_step=39800	acc=0.5625	acc_avg=0.5653	loss=1.5003	loss_avg=1.4983	lr=0.0000	|gn|=6.2658	time=1.66it/s
+2025-11-26 10:49:22,197 epoch=98	global_step=39900	acc=0.6562	acc_avg=0.5648	loss=1.3559	loss_avg=1.4980	lr=0.0000	|gn|=6.2732	time=1.66it/s
+2025-11-26 10:50:26,769 ====================Eval Epoch 98====================
+2025-11-26 10:50:30,771 epoch=98	global_step=3	acc=0.1422	acc_avg=0.1060	acc5=0.3448	acc5_avg=0.2750	loss=6.5423	loss_avg=6.6811	time=2.26it/s
+2025-11-26 10:50:30,772 Eval Loss:6.6811	Eval acc: 10.60
+2025-11-26 10:50:30,772 
+2025-11-26 10:50:30,772 ====================Training Epoch 99====================
+2025-11-26 10:50:35,309 epoch=99	global_step=40000	acc=0.6094	acc_avg=0.5813	loss=1.6246	loss_avg=1.5051	lr=0.0000	|gn|=6.0648	time=1.66it/s
+2025-11-26 10:51:43,227 epoch=99	global_step=40100	acc=0.5156	acc_avg=0.5612	loss=1.4030	loss_avg=1.5247	lr=0.0000	|gn|=5.9652	time=1.66it/s
+2025-11-26 10:52:51,158 epoch=99	global_step=40200	acc=0.5938	acc_avg=0.5642	loss=1.3260	loss_avg=1.5020	lr=0.0000	|gn|=5.6474	time=1.66it/s
+2025-11-26 10:53:59,174 epoch=99	global_step=40300	acc=0.5312	acc_avg=0.5662	loss=1.7128	loss_avg=1.4984	lr=0.0000	|gn|=6.8156	time=1.66it/s
+2025-11-26 10:55:06,441 ====================Eval Epoch 99====================
+2025-11-26 10:55:10,517 epoch=99	global_step=3	acc=0.0560	acc_avg=0.0860	acc5=0.3534	acc5_avg=0.2820	loss=7.1440	loss_avg=14.9468	time=2.25it/s
+2025-11-26 10:55:10,517 Eval Loss:14.9468	Eval acc: 8.60
+2025-11-26 10:55:10,557 Running Cost 0.33 Days 
+
